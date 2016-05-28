@@ -1,0 +1,222 @@
+/* 
+    Created on : 16/05/2016
+    Author     : Celia Alonso Reguero
+*/
+
+/* TIPOS DE LETRAS */
+@font-face{
+    font-family: Book_Antiqua;
+    src: url("../fonts/Book_Antiqua/book-antiqua.ttf");
+}
+
+@font-face{
+    font-family: PT_Serif;
+    src: url("../fonts/PT_Serif/PT_Serif-Web-Regular.ttf");
+}
+
+/* ESTILO GENERAL DE LA WEB */
+*{
+    padding:0px; 
+    margin:0px;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    font-family: PT_Serif, Arial;
+    font-size: 15px; 
+    color: #000000; 
+    text-align: justify;
+    background-color: #F8F8FF;
+}
+
+.container{
+    padding:0px; 
+    margin:0px;
+}
+
+#wrapper{
+    width: 60vw;
+    min-height: 100%; 
+    position: relative; 
+    margin: 0 auto; 
+    background-color: #FFFFFF;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.centrar{
+    text-align: center;
+}
+
+.invisible{
+    display: none;
+}
+
+.errorH{
+    color: #8B0000;
+}
+
+main{
+    min-height: 71%;
+}
+
+/* ESTILO DE TÍTULOS */
+h1, h2{
+    font-family: Book_Antiqua; 
+    font-weight: bold; 
+}
+
+h1{
+    font-size: 25px; 
+    color: #0072BD;
+    margin: 0 0 10px 0; 
+    text-align: center;
+}
+
+h2{
+    font-size: 20px;
+    color: #000000;
+}
+
+/* ESTILO DEL HEADER */
+.header{
+    width: 100%; 
+    padding: 10px; 
+    padding-left: 30px;
+}
+
+header div.header p{
+    font-family: Book_Antiqua; 
+    font-weight: bold; 
+    font-size: 50px;
+}
+
+header div.header img{
+    height: 110px; 
+    width: 120px;
+}
+
+/* ESTILOS DE LOS BOTONES */
+.btn{
+    padding: 7px;
+    background-color: #0072BD;
+    border-color: #0072BD;
+    border-radius: 5px;
+    color: #FFFFFF;
+}
+
+.btn:hover{
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.btn:visited{
+    color: #F8F8FF;
+}
+
+.btn[disabled]{
+    background-color: #DFDFE5;
+    color: #FFFFFF;
+    border-color: #DFDFE5;
+}
+
+/* ESTILOS DE LOS BOTONES HEADER*/
+.boton-header{
+    margin-right: 20px;
+}
+
+.boton-header:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+/* ESTILO DEL MENÚ DE NAVEGACIÓN PRINCIPAL */
+.navbar-default .navbar-nav > li > a{
+    color: #FFFFFF;
+    padding: 25px;
+}
+
+.navbar-collapse.collapse{
+    padding: 0px;
+}
+
+.navbar-default .navbar-nav > li{
+    width: 20vw;
+    text-align: center;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.navbar-default .navbar-nav > li > a:visited{
+    color: #F8F8FF;
+}
+
+.navbar-default .navbar-nav > li > a.active{
+    background-color: #265C7F;
+}
+
+.nav{
+    font-size: 30px;  
+    width: 100%;
+}
+
+.navbar{
+    margin: 0px;
+}
+
+.navbar-default{
+    background: none; 
+    border: none; 
+    width: 100%;
+    background-color: #0072BD;
+    border-radius: 0;
+}
+
+.navAux { 
+    z-index: 9999; 
+    position: fixed; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+}
+
+/* ESTILO DE LAS MIGAS DE PAN */
+.migasPan{
+    margin-top: 20px;    
+    margin-left: 30px;
+}
+
+.migasPan a{
+    color: #000000;
+}
+
+.migasPan>.estoy {
+    font-weight: bold;
+}
+
+/* ESTILO DEL FOOTER */
+footer{
+    background-color: #0072BD;
+    color: #FFFFFF;
+    padding: 10px;
+    text-align: center;
+}
+
+footer div p{
+    width: 59vw;
+    margin: 0px;
+}
+
+.autor{
+    font-size: 12px;
+}

@@ -1,0 +1,45 @@
+/* 
+    Created on : 16/05/2016
+    Author     : Celia Alonso Reguero
+*/
+
+/* ESTILOS DE LA PÁGINA INICIO */
+.imagenInicio img{
+    width: 60vw;
+}
+
+main .container>.row.informacion{
+    width: 59vw;
+    margin: 5px;
+    padding: 20px;
+}
+
+main .container>.row>div.informacion{
+    margin: 0px;
+    
+}
+
+div.informacion>div{
+    padding: 25px;
+}
+
+div.izquierdaArriba{
+    border-right: 1px solid #0072BD;
+    border-bottom: 1px solid #0072BD;
+    padding-top: 10px;
+}
+
+div.izquierdaAbajo{
+    border-top: 0px solid #0072BD;
+    border-right: 1px solid #0072BD;
+}
+
+div.derechaArriba{
+    border-left: 0px solid #0072BD;
+    border-bottom: 1px solid #0072BD; 
+}
+
+div.derechaAbajo{
+    border-top: 0px solid #0072BD;
+    border-left: 0px solid #0072BD;
+}

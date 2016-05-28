@@ -1,0 +1,35 @@
+/* 
+    Created on : 16/05/2016
+    Author     : Celia Alonso Reguero
+*/
+
+.formulario{
+    width: 50vw;
+    color: #000000; 
+    border: 1px solid #0072BD;
+    border-radius: 30px;
+    margin: 65px;
+    margin-top: 30px;
+}
+
+.formulario label{
+    text-align: left;
+}
+
+.formulario h1{
+    padding: 10px;
+    padding-top: 25px;
+}
+
+.formulario form{
+    padding: 20px;
+    padding-top: 0px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.botonFormulario{
+    text-align: center;
+}
+
+
