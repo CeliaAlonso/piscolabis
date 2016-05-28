@@ -54,7 +54,7 @@ class Controlador {
                 header('Content-Type: text/xml');
                 echo $xml;
                 break;
-            case "confirmar_reserva":
+            case "hacer_reserva":
                 $xml = $this->_hacerReservas();
                 header('Content-Type: text/xml');
                 echo $xml;
@@ -119,11 +119,11 @@ class Controlador {
 //        $fecha = $_POST["fecha_final"];
 //        $usuario = $_SESSION["usuario"];
 
-        if ($this->_campoValido() || True) {
+        if ($this->_campoValido()) {
             $reserva = new Reservas($nombre, $numero, $fecha, $usuario);
             $horario = new Horario($fecha, "", "");
             if ($reserva->guardarReserva($mensaje) && $horario->loadHorarioReservado($mensaje)) {
-                $reservas = "<reservas><reserva><respuesta>Se ha realizado su reserva correctamente.</respuesta></reserva></reservas>";
+                $reservas = "<reservas><respuesta>Se ha realizado su reserva correctamente.</respuesta></reservas>";
                 return $reservas;
             }
         } else {

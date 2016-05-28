@@ -11,7 +11,6 @@ function habilitarBuscar() {
     arrayCampos.push(document.getElementById("numero_comensales").value.length);
     arrayCampos.push(document.getElementById("fecha_reserva").value.length);
     arrayCampos.push(document.getElementById("hora_reserva").value.length);
-
     var camposRellenados = true;
     for (var i = 0; i < arrayCampos.length; i++)
         if (arrayCampos[i] <= 0) {
@@ -23,7 +22,6 @@ function habilitarBuscar() {
         document.getElementById("buscar").removeAttribute('disabled');
     else
         document.getElementById("buscar").setAttribute('disabled', 'disabled');
-
 }
 
 /* FUNCION QUE AÑADE EL ATRIBUTO 'regex' A LA LIBRERIA jquery.validate.js */
@@ -35,7 +33,6 @@ $.validator.addMethod(
         },
         "Comprueba el valor de este campo"
         );
-
 /* FUNCION DE VALIDACIÓN DE LA LIBRERIA jquery.validate.js */
 $('#formulario_reserva').validate({
     rules: {
@@ -45,7 +42,7 @@ $('#formulario_reserva').validate({
         },
         numero_comensales: {
             required: true,
-            regex: /^([0-9]{1}|[10])+$/, 
+            regex: /^([0-9]{1}|[10])+$/,
             min: 1,
             max: 10
         },
@@ -100,17 +97,13 @@ var STATUS_RIGHT = 200;
 
 /* CONEXIÓN AJAX Función que busca las fechas disponibles para reservar */
 function buscarFechaDisponible() {
-
     peticion_http = new XMLHttpRequest();
-
     if (peticion_http) {
-
         peticion_http.onload = respuestaFechaDisponible;
         peticion_http.open("POST", "../controlador/controlador.php", true);
         peticion_http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         var queryString = crea_query_string("buscar_horarios");
         peticion_http.send(queryString);
-
     }
 
 }
@@ -121,16 +114,19 @@ function respuestaFechaDisponible() {
     if (peticion_http.readyState == READY_STATE_COMPLETE && peticion_http.status == STATUS_RIGHT) {
 
         var doc_xml = peticion_http.responseXML;
-        var arrayDisponibles = doc_xml.getElementsByTagName("reserva");
-        var contenido = "";
+        var respuesta = doc_xml.getElementsByTagName("horarios")[0];
+        if (respuesta.firstChild.nodeName == "RESPUESTA") {
+            document.getElementById("hora_reserva0").innerHTML = respuesta.firstChild.nodeValue;
+        } else {
+            var contenido = "";
+            var horario = respuesta.getElementsByTagName("horario");
+            for (var i = 0; i < horario.length; i++) {
+                var hora = horario.getElementsByTagName('hora')[0].firstChild.nodeValue;
+                contenido += "<option value='" + hora + "'>" + hora + "</option>";
+            }
 
-        for (var i = 0; i < arrayDisponibles.length; i++) {
-            var hora = arrayDisponibles[i].getElementsByTagName('hora')[0].firstChild.nodeValue;
-            contenido += "<input type='radio' name='opcion' value='" + hora + "'>" + hora + "<br>";
+            document.getElementById("hora_reserva").innerHTML = contenido;
         }
-        
-        document.getElementById("opcionesDisponible").innerHTML = contenido;
-        document.getElementById("confirmarReserva").setAttribute('class', 'botonFormulario');
 
     }
 
@@ -143,10 +139,9 @@ function crea_query_string(accion) {
     var numero_comensales = document.getElementById("numero_comensales");
     var fecha_reserva = document.getElementById("fecha_reserva");
     var hora_reserva = document.getElementById("hora_reserva");
-
     if (accion == "buscar_horarios") {
-        return "accion" + accion + "&fecha=" + encodeURIComponent(fecha_reserva.value) + "&hora=" + encodeURIComponent(hora_reserva.value);
-    } else if (accion == "confirmar_reserva") {
+        return "accion" + accion + "&fecha=" + encodeURIComponent(fecha_reserva.value);
+    } else if (accion == "hacer_reserva") {
         return "accion" + accion + "&nombre=" + encodeURIComponent(nombre_reserva.value) + "&numero=" + encodeURIComponent(numero_comensales.value) + "&fecha=" + encodeURIComponent(fecha_reserva.value) + "&hora=" + encodeURIComponent(hora_reserva.value);
     }
 }
@@ -155,22 +150,28 @@ function crea_query_string(accion) {
 function confirmarReserva() {
 
     peticion_http = new XMLHttpRequest();
-
     if (peticion_http) {
 
         peticion_http.onload(respuestaConfirmarReserva);
         peticion_http.open("POST", "../controlador/controlador.php", true);
         peticion_http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        var queryString = crea_query_string("confirmar_reserva");
+        var queryString = crea_query_string("hacer_reserva");
         peticion_http.send(queryString);
-
     }
 
 }
 
-/* CONEXIÓN AJAX Función que devuelve si ha sido confirmada la reserva */ 
+/* CONEXIÓN AJAX Función que devuelve si ha sido confirmada la reserva */
 function respuestaConfirmarReserva() {
 
+    if (peticion_http.readyState == READY_STATE_COMPLETE && peticion_http.status == STATUS_RIGHT) {
 
+        var doc_xml = peticion_http.responseXML;
+        var respuesta = doc_xml.getElementsByTagName("respuesta")[0];
+        
+        location.reload(true);
+        document.getElementById("resultado").innerHTML = respuesta.firstChild.nodeValue;
+
+    }
 
 }

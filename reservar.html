@@ -44,10 +44,7 @@
                             </p>
                         </div>
                         <div class="col-lg-5 col-sm-12 right">
-                            <div class="col-lg-12 col-sm-6">
-                                <p id="user"></p>
-                            </div>
-                            <div class="col-lg-12 col-sm-6">
+                            <div id="usuario" class="col-lg-12 col-sm-6">
                                 <a href="registro.html" class="btn boton-header right">Regístrate</a>
                                 <a href="acceso.html" class="btn boton-header right">Accede a tu cuenta</a>
                             </div>
@@ -83,6 +80,11 @@
                     <div class="row">
                         <div class="col-lg-12 migasPan">
                             <a href="index.html">Inicio</a> > <a href="#" class="estoy">Reservas</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 id="resultado"></h1>
                         </div>
                     </div>
                     <div class="container formulario">
@@ -127,14 +129,14 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <select name="hora_reserva" id="hora_reserva" class="form-control" onchange="habilitarBuscar()" required="">
-                                                <option value="15:00:00">15:00</option>
+
                                             </select>
                                             <span id="hora_reserva0" class="form-control-feedback"></span>
                                         </div>
                                     </div>
                                     <div id="busqueda" class="row form-group botonFormulario">
                                         <div class="col-lg-12 ">
-                                            <button type="button" id="buscar" class="btn" disabled="">Buscar</button>
+                                            <button type="button" id="reservar" class="btn" disabled="" onclick="confirmarReserva()">Reservar</button>
                                         </div>
                                     </div>
                                 </form>

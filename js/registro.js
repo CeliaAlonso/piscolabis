@@ -152,24 +152,10 @@ function respuestaRegistro() {
     if (peticion_http.readyState == READY_STATE_COMPLETE && peticion_http.status == STATUS_RIGHT) {
 
         var doc_xml = peticion_http.responseXML;
-        var arrayCuenta = doc_xml.getElementsByTagName("cuenta");
-        var hijoCuenta = arrayCuenta[0].firstChild;
-
-        if (hijoCuenta.nodeName == "RESPUESTA") {
-
-//            window.open("confirmado.html",'_self');
-            window.location.href = "confirmar_registro.html";
-            document.getElementById("mensaje").innerHTML = hijoCuenta.firstChild.nodeValue;
-//            insertar en la pagina confirmado hijoCuenta.firstChild.nodeValue 
-
-        } else {
-
-            window.location.href = "error.html";
-            document.getElementById("mensaje").innerHTML = hijoCuenta.firstChild.nodeValue;
-//            insertar en la pagina error hijoCuenta.firstChild.nodeValue 
-
-        }
-
+        var respuesta = doc_xml.getElementsByTagName("respuesta")[0];
+        
+        location.reload(true);
+        document.getElementById("resultado").innerHTML = respuesta.firstChild.nodeValue;
     }
 
 }
