@@ -212,9 +212,26 @@ footer{
     text-align: center;
 }
 
+footer div.enlaces{
+    margin-bottom: 10px;
+}
+
 footer div p{
     width: 59vw;
     margin: 0px;
+}
+
+footer div p a{
+    color: #FFFFFF;
+}
+
+footer div p a:hover{
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+footer div p a:visited{
+    color: #F8F8FF;
 }
 
 .autor{

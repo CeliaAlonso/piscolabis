@@ -71,7 +71,6 @@ class Reservas {
     public function guardarReserva(&$mensaje) {
         $bd = new MySQL_reservas();
         $sql = $this->_crearReserva();
-        $sql->addEjecutar(":id_reserva", null);
         $sql->addEjecutar(":nombre", $this->_nombre);
         $sql->addEjecutar(":numero", $this->_numero);
         $sql->addEjecutar(":id_fecha", $this->_id_fecha);
@@ -86,8 +85,6 @@ class Reservas {
             $tb = $bd->getTabla();
             $tabla = $base . ".$tb";
             $sql->addTable($tabla);
-            $sql->addSelect("id_reserva");
-            $sql->addValue(":id");
             $sql->addSelect("nombre");
             $sql->addValue(":nombre");
             $sql->addSelect("numero");

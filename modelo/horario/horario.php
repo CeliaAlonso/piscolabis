@@ -76,7 +76,7 @@ class Horario {
         $tb = $bd->getTabla();
         $tabla = $base . ".$tb";
         $sql->addTable($tabla);
-        $sql->addSelect("disponible = FALSE");
+        $sql->addSelect("disponible = 0");
         $sql->addWhere("id_fecha = :id_fecha");
         return $sql;
     }
@@ -85,7 +85,7 @@ class Horario {
         $bd = new MySQL_horario();
         $sql = $this->_horarioReservadoLoad();
         $sql->addEjecutar(":id_fecha", $this->_id_horario);
-        return $bd->ejecutar($sql, $mensaje);
+        return $bd->modificar($sql, $mensaje);
     }
     
 }

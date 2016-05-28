@@ -32,7 +32,7 @@ class Controlador {
 
     public function run() {
 //        $accion = (isset($_POST["accion"]) ? $_POST["accion"] : "");
-        $accion = "buscar_horarios";
+        $accion = "ver_reserva";
         switch ($accion) {
             case "registrar":
                 $xml = $this->_insertarUsuario();
@@ -64,13 +64,13 @@ class Controlador {
 
     private function _listarHorarios() {
         $mensaje = '';
-        $fecha = $_POST["fecha_reserva"];
-//        $fecha = "2016-06-12";
+//        $fecha = $_POST["fecha_reserva"];
+        $fecha = "2016-06-12";
 //        $hora = "21:45:00";
         $horario = new Horario("", $fecha, "");
         if ($datos = $horario->loadHorarioDisponible($mensaje)) {
             $horarios = "<horarios>";
-            for ($i = 0; $i < 3; $i++) {
+            for ($i = 0; $i < count($datos); $i++) {
                 $horarios .= "<horario><id>" . $datos[$i]["id_fecha"] . "</id><fecha>" . $datos[$i]["fecha"] . "</fecha><hora>" . $datos[$i]["hora"] . "</hora></horario>";
             }
             $horarios .="</horarios>";
@@ -87,8 +87,10 @@ class Controlador {
     private function _listarReservas() {
         $mensaje = '';
 //        $usuario = $_SESSION["usuario"];
+        $usuario = 1;
 
         $reserva = new Reservas("", "", "", $usuario);
+
         if ($datos = $reserva->loadReserva($mensaje)) {
             $reservas = "<reservas>";
             for ($i = 0; $i < count($datos); $i++) {
@@ -108,12 +110,16 @@ class Controlador {
     private function _hacerReservas() {
         $mensaje = '';
         $this->_camposObligatorios = array(["nombre_reserva", "string"], ["numero_comensales", "numero"], ["fecha_final", "fecha"]);
-        $nombre = $_POST["nombre_reserva"];
-        $numero = $_POST["numero_comensales"];
-        $fecha = $_POST["fecha_final"];
+        $nombre = "Celia Alonso";
+        $numero = 3;
+        $fecha = 42;
+        $usuario = 1;
+//        $nombre = $_POST["nombre_reserva"];
+//        $numero = $_POST["numero_comensales"];
+//        $fecha = $_POST["fecha_final"];
 //        $usuario = $_SESSION["usuario"];
 
-        if ($this->_campoValido()) {
+        if ($this->_campoValido() || True) {
             $reserva = new Reservas($nombre, $numero, $fecha, $usuario);
             $horario = new Horario($fecha, "", "");
             if ($reserva->guardarReserva($mensaje) && $horario->loadHorarioReservado($mensaje)) {
