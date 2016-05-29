@@ -32,7 +32,7 @@ class Controlador {
 
     public function run() {
 //        $accion = (isset($_POST["accion"]) ? $_POST["accion"] : "");
-        $accion = $_POST["accion"];
+        $accion = "ver_reserva";
         switch ($accion) {
             case "registrar":
                 $xml = $this->_insertarUsuario();
@@ -64,8 +64,9 @@ class Controlador {
 
     private function _listarHorarios() {
         $mensaje = '';
-        $fecha = $_POST["fecha"];
-//        $fecha = "2016-06-12";
+//        $fecha = $_POST["fecha_reserva"];
+        $fecha = "2016-06-12";
+//        $hora = "21:45:00";
         $horario = new Horario("", $fecha, "");
         if ($datos = $horario->loadHorarioDisponible($mensaje)) {
             $horarios = "<horarios>";
@@ -85,8 +86,8 @@ class Controlador {
 
     private function _listarReservas() {
         $mensaje = '';
-        $usuario = $_SESSION["usuario"];
-//        $usuario = 1;
+//        $usuario = $_SESSION["usuario"];
+        $usuario = 1;
 
         $reserva = new Reservas("", "", "", $usuario);
 
@@ -109,13 +110,13 @@ class Controlador {
     private function _hacerReservas() {
         $mensaje = '';
         $this->_camposObligatorios = array(["nombre_reserva", "string"], ["numero_comensales", "numero"], ["fecha_final", "fecha"]);
-//        $nombre = "Celia Alonso";
-//        $numero = 3;
-//        $fecha = 42;
+        $nombre = "Celia Alonso";
+        $numero = 3;
+        $fecha = 42;
         $usuario = 1;
-        $nombre = $_POST["nombre"];
-        $numero = $_POST["numero"];
-        $fecha = $_POST["fecha"];
+//        $nombre = $_POST["nombre_reserva"];
+//        $numero = $_POST["numero_comensales"];
+//        $fecha = $_POST["fecha_final"];
 //        $usuario = $_SESSION["usuario"];
 
         if ($this->_campoValido()) {
@@ -137,22 +138,22 @@ class Controlador {
     private function _insertarUsuario() {
         $mensaje = '';
         $this->_camposObligatorios = array(["nombre", "string"], ["apellido1", "string"], ["apellido2", "string"], ["nacimiento", "fecha"], ["email", "email"], ["telefono", "telefono"], ["usuario", "letrasNum"], ["contrasenia", "contrasenia"]);
-        $nombre = $_POST["nombre"];
-        $apellido1 = $_POST["apellido1"];
-        $apellido2 = $_POST["apellido2"];
-        $nacimiento = $_POST["nacimiento"];
-        $email = $_POST["email"];
-        $telefono = $_POST["telefono"];
-        $usuario = $_POST["usuario"];
-        $contrasenia = $_POST["contrasenia"];
-//        $nombre = "Celia";
-//        $apellido1 = "Ramírez";
-//        $apellido2 = "Fontenla";
-//        $nacimiento = "1996-03-17";
-//        $email = "Cely18@hotmail.com";
-//        $telefono = "916636032";
-//        $usuario = "Zrows";
-//        $contrasenia = "123456789X";
+//        $nombre = $_POST["nombre"];
+//        $apellido1 = $_POST["apellido1"];
+//        $apellido2 = $_POST["apellido2"];
+//        $nacimiento = $_POST["nacimiento"];
+//        $email = $_POST["email"];
+//        $telefono = $_POST["telefono"];
+//        $usuario = $_POST["usuario"];
+//        $contrasenia = $_POST["contrasenia"];
+        $nombre = "Celia";
+        $apellido1 = "Ramírez";
+        $apellido2 = "Fontenla";
+        $nacimiento = "1996-03-17";
+        $email = "Cely18@hotmail.com";
+        $telefono = "916636032";
+        $usuario = "Zrows";
+        $contrasenia = "123456789X";
 
         if ($this->_campoValido()) {
 

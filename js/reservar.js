@@ -121,8 +121,9 @@ function respuestaFechaDisponible() {
             var contenido = "";
             var horario = respuesta.getElementsByTagName("horario");
             for (var i = 0; i < horario.length; i++) {
-                var hora = horario.getElementsByTagName('hora')[0].firstChild.nodeValue;
-                contenido += "<option value='" + hora + "'>" + hora + "</option>";
+                var id = horario[i].getElementsByTagName('id')[0].firstChild.nodeValue;
+                var hora = horario[i].getElementsByTagName('hora')[0].firstChild.nodeValue;
+                contenido += "<option value='" + id + "'>" + hora + "</option>";
             }
 
             document.getElementById("hora_reserva").innerHTML = contenido;
@@ -140,9 +141,9 @@ function crea_query_string(accion) {
     var fecha_reserva = document.getElementById("fecha_reserva");
     var hora_reserva = document.getElementById("hora_reserva");
     if (accion == "buscar_horarios") {
-        return "accion" + accion + "&fecha=" + encodeURIComponent(fecha_reserva.value);
+        return "accion=" + accion + "&fecha=" + encodeURIComponent(fecha_reserva.value);
     } else if (accion == "hacer_reserva") {
-        return "accion" + accion + "&nombre=" + encodeURIComponent(nombre_reserva.value) + "&numero=" + encodeURIComponent(numero_comensales.value) + "&fecha=" + encodeURIComponent(fecha_reserva.value) + "&hora=" + encodeURIComponent(hora_reserva.value);
+        return "accion=" + accion + "&nombre=" + encodeURIComponent(nombre_reserva.value) + "&numero=" + encodeURIComponent(numero_comensales.value) + "&fecha=" + encodeURIComponent(hora_reserva.value);
     }
 }
 
@@ -152,7 +153,7 @@ function confirmarReserva() {
     peticion_http = new XMLHttpRequest();
     if (peticion_http) {
 
-        peticion_http.onload(respuestaConfirmarReserva);
+        peticion_http.onload = respuestaConfirmarReserva;
         peticion_http.open("POST", "../controlador/controlador.php", true);
         peticion_http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         var queryString = crea_query_string("hacer_reserva");
@@ -168,8 +169,7 @@ function respuestaConfirmarReserva() {
 
         var doc_xml = peticion_http.responseXML;
         var respuesta = doc_xml.getElementsByTagName("respuesta")[0];
-        
-        location.reload(true);
+
         document.getElementById("resultado").innerHTML = respuesta.firstChild.nodeValue;
 
     }
