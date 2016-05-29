@@ -6,7 +6,7 @@
 /* Large Devices, Desktops */
 @media only screen and (min-width: 993px) and (max-width: 1200px) {
     #wrapper {
-        width: 70vw;
+        width: 80%;
     }
     .header{
         padding-left: 10px;
@@ -21,35 +21,11 @@
     .navbar-default .navbar-nav > li > a{
         padding: 20px;
     }
-    .navbar-default .navbar-nav > li{
-        width: 23.30vw;
-        text-align: center;
-    }
     main{
         min-height: 80%;
     }
-    .imagenInicio img{
-        width: 70vw;
-    }
-    main .container>.row.informacion{
-        width: 100%;
-        margin: 5px;
-        padding: 25px;
-    }
-    .formulario{
-        margin-left: 110px;
-    }
-    .contenido{
-        width: 62vw;
-        margin: 50px;
-        margin-top: 30px;
-    }
     .contenido ul {
         margin-left: 35px;
-    }
-    footer div p{
-        width: 70vw;
-        margin: 0px;
     }
 }
 /* Medium Devices, Desktops */
@@ -71,7 +47,7 @@
     }
     .header{
         width: 100%;
-        padding: 20px;
+        padding: 10px;
     }
     header div.header p{
         font-size: 40px;
@@ -82,24 +58,7 @@
     .navbar-default .navbar-nav > li > a{
         padding: 20px;
     }
-    .navbar-default .navbar-nav > li{
-        width: 33.2vw;
-    }
-    .navbar-collapse.collapse{
-        width: 100vw;
-        padding: 0px;
-        margin: 0px;
-    }
-    .imagenInicio img{
-        width: 100vw;
-    }
-    main.container{
-        margin: 0 auto;
-        width: 100%;
-    }
     main .container>.row.informacion{
-        width: 100%;
-        margin: 5px;
         padding: 15px;
     }
     div.informacion>div{
@@ -121,28 +80,6 @@
     div.derechaAbajo{
         border-top: 0px solid #0072BD;
         border-left: 1px solid #0072BD;
-    }
-    .formulario{
-        width: 70vw;
-        margin: 0 auto;
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-    .contenido{
-        width: 85vw;
-        margin: 0 auto;
-        margin-top: 15px;
-        margin-bottom: 15px;
-    }
-    .contenido ul {
-        margin-left: 25px;
-    }
-    footer{
-        width: 100vw;
-        margin: 0px;
-    }
-    footer div p{
-        width: 100vw;
     }
     .autor{
         font-size: 10px;
@@ -189,16 +126,10 @@
     .navbar-default .navbar-nav > li > a{
         padding: 15px;
     }
-    .navbar-default .navbar-nav > li{
-        width: 100vw;
-    }
-    .navbar-collapse.collapse{
-        width: 100vw;
-        padding: 0px;
+    .navbar-collapse.collapse li {
+        width: 100%;
         margin: 0px;
-    }
-    .imagenInicio img{
-        width: 100vw;
+        padding: 0px;
     }
     main .container>.row.informacion{
         width: 100%;
@@ -226,7 +157,6 @@
         border-left: 0px solid #0072BD;
     }
     .formulario{
-        width: 70vw;
         margin: 0 auto;
         margin-top: 15px;
         margin-bottom: 15px;
@@ -242,20 +172,12 @@
         margin-right: 15px;
     }
     .contenido{
-        width: 85vw;
         margin: 0 auto;
         margin-top: 15px;
         margin-bottom: 15px;
     }
     .contenido ul {
         margin-left: 25px;
-    }
-    footer{
-        width: 100vw;
-        margin: 0px;
-    }
-    footer div p{
-        width: 100vw;
     }
     .autor{
         font-size: 9px;

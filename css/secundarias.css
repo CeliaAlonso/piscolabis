@@ -4,10 +4,11 @@
 */
 
 .formulario{
-    width: 50vw;
+    width: 80%;
     color: #000000; 
     border: 1px solid #0072BD;
     border-radius: 30px;
+    margin: 0 auto;
     margin-top: 30px;
     margin-bottom: 65px;
 }
@@ -33,10 +34,11 @@
 }
 
 .contenido{
-    width: 50vw;
+    width: 80%;
     color: #000000; 
-    margin: 65px;
+    margin: 0 auto;
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .contenido ul {

@@ -5,18 +5,17 @@
 
 /* ESTILOS DE LA PÁGINA INICIO */
 .imagenInicio img{
-    width: 60vw;
+    width: 100%;
 }
 
 main .container>.row.informacion{
-    width: 59vw;
+    width: 100%;
     margin: 5px;
     padding: 20px;
 }
 
 main .container>.row>div.informacion{
     margin: 0px;
-    
 }
 
 div.informacion>div{

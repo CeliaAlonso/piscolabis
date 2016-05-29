@@ -154,7 +154,6 @@ function respuestaRegistro() {
         var doc_xml = peticion_http.responseXML;
         var respuesta = doc_xml.getElementsByTagName("respuesta")[0];
         
-        location.reload(true);
         document.getElementById("resultado").innerHTML = respuesta.firstChild.nodeValue;
     }
 
@@ -169,7 +168,7 @@ function crea_query_string() {
     var email = document.getElementById("email");
     var telefono = document.getElementById("telefono");
     var usuario = document.getElementById("usuario");
-    var contrasenia = document.getElementById("contrasenia1");
+    var contrasenia = document.getElementById("contrasenia");
 
     return "accion=registrar&nombre=" + encodeURIComponent(nombre.value) + "&apellido1=" + encodeURIComponent(apellido1.value) + "&apellido2=" + encodeURIComponent(apellido2.value) + "&nacimiento=" + encodeURIComponent(nacimiento.value) + "&email=" + encodeURIComponent(email.value) + "&telefono=" + encodeURIComponent(telefono.value) + "&usuario=" + encodeURIComponent(usuario.value) + "&contrasenia=" + encodeURIComponent(contrasenia.value);
 
