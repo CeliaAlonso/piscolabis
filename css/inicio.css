@@ -24,22 +24,22 @@ div.informacion>div{
 }
 
 div.izquierdaArriba{
-    border-right: 1px solid #0072BD;
+    border-right: 0px solid #0072BD;
     border-bottom: 1px solid #0072BD;
     padding-top: 10px;
 }
 
 div.izquierdaAbajo{
     border-top: 0px solid #0072BD;
-    border-right: 1px solid #0072BD;
+    border-right: 0px solid #0072BD;
 }
 
 div.derechaArriba{
-    border-left: 0px solid #0072BD;
+    border-left: 1px solid #0072BD;
     border-bottom: 1px solid #0072BD; 
 }
 
 div.derechaAbajo{
     border-top: 0px solid #0072BD;
-    border-left: 0px solid #0072BD;
+    border-left: 1px solid #0072BD;
 }

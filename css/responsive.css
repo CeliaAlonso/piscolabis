@@ -32,7 +32,7 @@
         width: 70vw;
     }
     main .container>.row.informacion{
-        width: 69vw;
+        width: 100%;
         margin: 5px;
         padding: 25px;
     }
@@ -95,10 +95,10 @@
     }
     main.container{
         margin: 0 auto;
-        width: 100vw;
+        width: 100%;
     }
     main .container>.row.informacion{
-        width: 100vw;
+        width: 100%;
         margin: 5px;
         padding: 15px;
     }
@@ -209,21 +209,21 @@
         padding: 10px;
     }
     div.izquierdaArriba{
-        border-left: 0px solid #0072BD;
+        border-right: 1px solid #0072BD;
         border-bottom: 1px solid #0072BD;
         padding-top: 5px;
     }
     div.derechaArriba{
-        border-right: 0px solid #0072BD;
+        border-left: 0px solid #0072BD;
         border-bottom: 1px solid #0072BD; 
     }
     div.izquierdaAbajo{
         border-top: 0px solid #0072BD;
-        border-left: 0px solid #0072BD;
+        border-right: 1px solid #0072BD;
     }
     div.derechaAbajo{
         border-top: 0px solid #0072BD;
-        border-right: 0px solid #0072BD;
+        border-left: 0px solid #0072BD;
     }
     .formulario{
         width: 70vw;

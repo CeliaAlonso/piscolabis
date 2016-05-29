@@ -8,8 +8,8 @@
     color: #000000; 
     border: 1px solid #0072BD;
     border-radius: 30px;
-    margin: 65px;
     margin-top: 30px;
+    margin-bottom: 65px;
 }
 
 .formulario label{

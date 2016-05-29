@@ -27,8 +27,8 @@ class MySQL_cuenta {
 
     const DB_DSN = "mysql:host=localhost"; // Nombre de host MYSQL
     const DB = "u476894591_pisco"; // Nombre de LA BASE DE DATOS
-    const USUARIO = "root"; // Nombre de usuario de MySQL
-    const PASSWORD = ""; // Contraseña de usuario de MySQL
+    const USUARIO = "u476894591_admin"; // Nombre de usuario de MySQL
+    const PASSWORD = "piscolabis"; // Contraseña de usuario de MySQL
     const TABLA = "usuarios"; // Nombre de la tabla
 
     private $_mensaje;
