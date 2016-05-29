@@ -4,7 +4,7 @@
  */
 
 /* Función que habilita el botón 'Buscar' */
-function habilitarBuscar() {
+function habilitarReservar() {
 
     var arrayCampos = new Array();
     arrayCampos.push(document.getElementById("nombre_reserva").value.length);
@@ -19,9 +19,9 @@ function habilitarBuscar() {
         }
 
     if (camposRellenados)
-        document.getElementById("buscar").removeAttribute('disabled');
+        document.getElementById("reservar").removeAttribute('disabled');
     else
-        document.getElementById("buscar").setAttribute('disabled', 'disabled');
+        document.getElementById("reservar").setAttribute('disabled', 'disabled');
 }
 
 /* FUNCION QUE AÑADE EL ATRIBUTO 'regex' A LA LIBRERIA jquery.validate.js */
