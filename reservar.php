@@ -20,6 +20,15 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
+<?php
+session_start();
+if (!isset($_SESSION["usuario"])) {
+    $user = '<a href="registro.php" class="btn boton-header right">Regístrate</a> <a href="acceso.php" class="btn boton-header right">Accede a tu cuenta</a>';
+    header('Location: error.php');
+} else {
+    $user = '<a href="mis_reservas.php" class="right">Mis reservas</a><a href="" class="right" onclick="desloguearse()">Salir</a>';
+}
+?>
 <html>
     <head>
         <title>PISCOLABIS | Reservar</title>
@@ -45,8 +54,7 @@
                         </div>
                         <div class="col-lg-5 col-sm-12 right">
                             <div id="user" class="col-lg-12 col-sm-6">
-                                <a href="registro.html" class="btn boton-header right">Regístrate</a>
-                                <a href="acceso.html" class="btn boton-header right">Accede a tu cuenta</a>
+                                <?php echo $user ?>     
                             </div>
                         </div>
                     </div>
@@ -67,7 +75,7 @@
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="index.html">Inicio</a></li>
+                                <li><a href="index.php">Inicio</a></li>
                                 <li><a href="#" class="active">Reservar</a></li>
                                 <li><a href="#" class="disabled">Contacto</a></li>
                             </ul>
@@ -79,12 +87,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 migasPan">
-                            <a href="index.html">Inicio</a> > <a href="#" class="estoy">Reservas</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 id="resultado"></h1>
+                            <a href="index.php">Inicio</a> > <a href="#" class="estoy">Reservas</a>
                         </div>
                     </div>
                     <div class="container formulario">
@@ -143,6 +146,11 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 id="resultado"></h1>
+                        </div>
+                    </div>
                 </div>
             </main>
             <!-- PIE DE PÁGINA -->
@@ -150,7 +158,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 enlaces">
-                            <p><a href="privacidad.html">Política de privacidad</a> | <a href="cookies.html">Política de cookies</a> | <a href="mapa_web.html">Mapa web</a></p>
+                            <p><a href="privacidad.php">Política de privacidad</a> | <a href="cookies.php">Política de cookies</a> | <a href="mapa_web.php">Mapa web</a></p>
                         </div>
                     </div>
                     <div class="row">
@@ -167,5 +175,6 @@
         <script src="lib/bootstrap/bootstrap.min.js"></script>
         <script src="lib/jquery/jquery.validate.js"></script>
         <script src="js/reservar.js"></script>
+        <script src="js/desloguear.js"></script>
     </body>
 </html>

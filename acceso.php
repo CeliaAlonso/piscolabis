@@ -3,7 +3,7 @@
     Fecha = 17/05/2016
     Licencia = GPL v3
     Versión = 1.0
-    Descripción = Error de Piscolabis
+    Descripción = Acceso de Piscolabis
 
     Copyright (C) 2016  Celia Alonso Reguero
 
@@ -20,9 +20,17 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
+<?php
+session_start();
+if (!isset($_SESSION["usuario"])) {
+    $user = '<a href="registro.php" class="btn boton-header right">Regístrate</a> <a href="acceso.php" class="btn boton-header right">Accede a tu cuenta</a>';
+}  else {
+    $user = '<a href="mis_reservas.php" class="right">Mis reservas</a><a href="" class="right" onclick="desloguearse()">Salir</a>';
+}
+?>
 <html>
     <head>
-        <title>PISCOLABIS</title>
+        <title>PISCOLABIS | Acceso</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="images/cloud_s.png" type="image/gif">
@@ -45,8 +53,7 @@
                         </div>
                         <div class="col-lg-5 col-sm-12 right">
                             <div id="user" class="col-lg-12 col-sm-6">
-                                <a href="registro.html" class="btn boton-header right">Regístrate</a>
-                                <a href="acceso.html" class="btn boton-header right">Accede a tu cuenta</a>
+                                <?php echo $user ?> 
                             </div>
                         </div>
                     </div>
@@ -67,28 +74,58 @@
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="index.html">Inicio</a></li>
-                                <li><a href="reservar.html">Reservar</a></li>
-                                <li><a href="contacto.html">Contacto</a></li>
+                                <li><a href="index.php">Inicio</a></li>
+                                <li><a href="reservar.php">Reservar</a></li>
+                                <li><a href="#">Contacto</a></li>
                             </ul>
                         </div>
                 </nav>
             </div>
             <!-- CONTENIDO DE LA PÁGINA WEB -->
             <main>
-                <div class="container formulario">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 migasPan">
+                            <a href="index.php">Inicio</a> > <a href="#" class="estoy">Acceso</a>
+                        </div>
+                    </div>
+                    <div class="container formulario">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h1>Accede a tu cuenta</h1>
+                                    </div>
+                                </div>
+                                <form id="formulario_acceso" class="form-horizontal" role="form">
+                                    <div class="row form-group">
+                                        <div class="col-lg-12">
+                                            <label for="usuario">Nombre de usuario</label>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Nombre de usuario" required="">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-lg-12">
+                                            <label for="contrasenia">Contraseña</label>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <input type="password" name="contrasenia" id="contrasenia" class="form-control" placeholder="Contraseña" required="">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group botonFormulario">
+                                        <div class="col-lg-12">
+                                            <button type="button" id="acceder" class="btn" onclick="loguearse()">Acceder</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="errorH">¡Error!</h1>
-                        </div>
-                        <div class="col-lg-12">
-                            <p id="errores" class="error">Ha ocurrido un error</p>
-                        </div>
-                        <div class="col-lg-12">
-                            <p class="centrar">No te preocupes por nada</p>
-                        </div>
-                        <div class="col-lg-12">
-                            <p class="centrar">Volver a la página de <a href="index.html">Inicio</a></p>
+                            <h1 id="resultado"></h1>
                         </div>
                     </div>
                 </div>
@@ -96,6 +133,11 @@
             <!-- PIE DE PÁGINA -->
             <footer>
                 <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 enlaces">
+                            <p><a href="privacidad.php">Política de privacidad</a> | <a href="cookies.php">Política de cookies</a> | <a href="mapa_web.php">Mapa web</a></p>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <p>Copyright © 2016 Piscolabis - GPL</p>
@@ -110,5 +152,6 @@
         <script src="lib/bootstrap/bootstrap.min.js"></script>
         <script src="lib/jquery/jquery.validate.js"></script>
         <script src="js/acceso.js"></script>
+        <script src="js/desloguear.js"></script>
     </body>
 </html>

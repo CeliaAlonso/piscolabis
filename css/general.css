@@ -108,6 +108,10 @@ header div.header img{
     width: 120px;
 }
 
+header #user a{
+    padding: 10px; 
+}
+
 /* ESTILOS DE LOS BOTONES */
 .btn{
     padding: 7px;
@@ -130,6 +134,25 @@ header div.header img{
     background-color: #DFDFE5;
     color: #FFFFFF;
     border-color: #DFDFE5;
+}
+
+/* ESTILOS DE LOS ENLACES */
+a{
+    color: #0072BD;
+    text-decoration: none;
+}
+
+a:visited{
+    color: #265C7F;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+a.deshabilitado{
+    color: #000000;
 }
 
 /* ESTILOS DE LOS BOTONES HEADER*/

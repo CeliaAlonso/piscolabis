@@ -1,9 +1,9 @@
 <!--
     Autor = Celia Alonso Reguero
-    Fecha = 16/05/2016
+    Fecha = 17/05/2016
     Licencia = GPL v3
     Versión = 1.0
-    Descripción = Inicio de Piscolabis
+    Descripción = Error de Piscolabis
 
     Copyright (C) 2016  Celia Alonso Reguero
 
@@ -20,15 +20,23 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
+<?php
+session_start();
+if (!isset($_SESSION["usuario"])) {
+    $user = '<a href="registro.php" class="btn boton-header right">Regístrate</a> <a href="acceso.php" class="btn boton-header right">Accede a tu cuenta</a>';
+} else {
+    $user = '<a href="mis_reservas.php" class="right">Mis reservas</a><a href="" class="right" onclick="desloguearse()">Salir</a>';
+}
+?>
 <html>
     <head>
-        <title>PISCOLABIS | Inicio</title>
+        <title>PISCOLABIS</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="images/cloud_s.png" type="image/gif">
         <link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/general.css"/>
-        <link rel="stylesheet" type="text/css" href="css/inicio.css"/>
+        <link rel="stylesheet" type="text/css" href="css/secundarias.css"/>
         <link rel="stylesheet" type="text/css" href="css/responsive.css"/>
     </head>
     <body>
@@ -45,8 +53,7 @@
                         </div>
                         <div class="col-lg-5 col-sm-12 right">
                             <div id="user" class="col-lg-12 col-sm-6">
-                                <a href="registro.html" class="btn boton-header right">Regístrate</a>
-                                <a href="acceso.html" class="btn boton-header right">Accede a tu cuenta</a>
+                                <?php echo $user ?> 
                             </div>
                         </div>
                     </div>
@@ -67,45 +74,27 @@
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="#" class="active">Inicio</a></li>
-                                <li><a href="reservar.html">Reservar</a></li>
-                                <li><a href="#">Contacto</a></li>
+                                <li><a href="index.php">Inicio</a></li>
+                                <li><a href="reservar.php">Reservar</a></li>
+                                <li><a href="contacto.php">Contacto</a></li>
                             </ul>
                         </div>
                 </nav>
             </div>
             <!-- CONTENIDO DE LA PÁGINA WEB -->
             <main>
-                <div class="container">
+                <div class="container formulario">
                     <div class="row">
-                        <div class="col-xs-12 imagenInicio">
-                            <img class="img-responsive" src="images/restaurant.jpg">
+                        <div class="col-lg-12">
+                            <h1 class="errorH">¡Error!</h1>
+                        </div>
+                        <div class="col-lg-12">
+                            <p id="errores" class="error centrar">Tienes que iniciar sesión con tu cuenta de usuario antes de poder realizar cualquier acción (como reservar)</p>
+                        </div>
+                        <div class="col-lg-12">
+                            <p class="centrar">Volver a la página de <a href="index.php">Inicio</a></p>
                         </div>
                     </div>
-                    <div class="row informacion">
-                        <div class="col-xs-6 izquierdaArriba">
-                            <h2>¿Quiénes somos?</h2>
-                            <p>Somos un grupo de restauración dedicado a la cocina creativa y a los nuevos sabores elaborados con productos frescos y naturales. Buscamos una mezcla entre lo tradicional y lo moderno sin dejar pasar los sabores de siempre.</p>
-                        </div>
-                        <div class="col-xs-6 derechaArriba">
-                            <h2>¿Qué ofrecemos?</h2>
-                            <p>Somos un grupo de restauración dedicado a la cocina creativa y a los nuevos sabores elaborados con productos frescos y naturales. Buscamos una mezcla entre lo tradicional y lo moderno sin dejar pasar los sabores de siempre.</p>
-                        </div>
-                        <div class="col-xs-6 izquierdaAbajo">
-                            <h2>¿Dónde estamos?</h2>
-                            <p>Puedes encontrarnos en C/Marqués de la Valdavia nº115, 28100 (Madrid)</p>
-                            <p>Teléfono: 91 663 60 31</p>
-                            <p>Email: piscolabis@restaurante.es</p>
-                        </div>
-                        <div class="col-xs-6 derechaAbajo">
-                            <h2>Horario</h2>
-                            <p>De Lunes a Viernes</p>
-                            <p>9:00 a 22:00</p>
-                            <p>Sábados y Domingos</p>
-                            <p>De 14:00 a 16:00 y de 20:00 a 22:00</p>
-                        </div>
-                    </div>
-                    
                 </div>
             </main>
             <!-- PIE DE PÁGINA -->
@@ -113,7 +102,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 enlaces">
-                            <p><a href="privacidad.html">Política de privacidad</a> | <a href="cookies.html">Política de cookies</a> | <a href="mapa_web.html">Mapa web</a></p>
+                            <p><a href="privacidad.php">Política de privacidad</a> | <a href="cookies.php">Política de cookies</a> | <a href="mapa_web.php">Mapa web</a></p>
                         </div>
                     </div>
                     <div class="row">
@@ -128,5 +117,8 @@
         <!-- SCRIPTS -->
         <script src="lib/jquery/jquery.min.js"></script>
         <script src="lib/bootstrap/bootstrap.min.js"></script>
+        <script src="lib/jquery/jquery.validate.js"></script>
+        <script src="js/acceso.js"></script>
+        <script src="js/desloguear.js"></script>
     </body>
 </html>

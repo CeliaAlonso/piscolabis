@@ -27,22 +27,27 @@ function respuestaVerReservas() {
         var respuesta = doc_xml.getElementsByTagName("reservas")[0];
         if (respuesta.firstChild.nodeName == "RESPUESTA") {
 
-            document.getElementById("reservas").innerHTML = "<h1>".respuesta.firstChild.firstChild.nodeValue."</h1>";
+            document.getElementById("reservas").innerHTML = "<h1>" + respuesta.firstChild.firstChild.nodeValue + "</h1>";
         } else {
             var reserva = respuesta.getElementsByTagName("reserva");
-            var tabla = "<table class='table table-bordered'> <thead> <tr> <th>Identificador</th> <th>Nombre de la reserva</th> <th>Número de comensales</th> <th>Fecha</th> <th>Hora</th> </tr> </thead> <tbody>";
-            var contenido = "";
-            for (var i = 0; i < reserva.length; i++) {
-                var id = reserva[i].getElementsByTagName('id')[0].firstChild.nodeValue;
-                var nombre = reserva[i].getElementsByTagName('nombre')[0].firstChild.nodeValue;
-                var numero = reserva[i].getElementsByTagName('numero')[0].firstChild.nodeValue;
-                var fecha = reserva[i].getElementsByTagName('fecha')[0].firstChild.nodeValue;
-                var hora = reserva[i].getElementsByTagName('hora')[0].firstChild.nodeValue;
-                        contenido += "<tr> <td>" + id + "</td> <td>".nombre."</td> <td>".numero."</td> <td>".fecha."</td> <td>".hora."</td> </tr>";
+            var tabla = "";
+            if (reserva.length == 0) {
+                tabla = "<p class='centrar'>No ha realizado ninguna reserva</p>";
+            } else {
+                tabla = "<table class='table table-bordered'> <thead> <tr> <th>Identificador</th> <th>Nombre de la reserva</th> <th>Número de comensales</th> <th>Fecha</th> <th>Hora</th> </tr> </thead> <tbody>";
+                var contenido = "";
+                for (var i = 0; i < reserva.length; i++) {
+                    var id = reserva[i].getElementsByTagName('id')[0].firstChild.nodeValue;
+                    var nombre = reserva[i].getElementsByTagName('nombre')[0].firstChild.nodeValue;
+                    var numero = reserva[i].getElementsByTagName('numero')[0].firstChild.nodeValue;
+                    var fecha = reserva[i].getElementsByTagName('fecha')[0].firstChild.nodeValue;
+                    var hora = reserva[i].getElementsByTagName('hora')[0].firstChild.nodeValue;
+                    contenido += "<tr> <td>" + id + "</td> <td>" + nombre + "</td> <td>" + numero + "</td> <td>" + fecha + "</td> <td>" + hora + "</td> </tr>";
+                }
+                tabla += contenido + "</tbody> </table>";
             }
-
-            tabla += contenido + "</tbody> </table>";
             document.getElementById("reservas").innerHTML = tabla;
+
         }
 
     }

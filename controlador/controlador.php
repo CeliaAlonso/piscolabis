@@ -22,16 +22,18 @@
 -->
 
 <?php
+session_start();
 require_once '../modelo/reservas/reservas.php';
 require_once '../modelo/cuenta/cuenta.php';
 require_once '../modelo/horario/horario.php';
+require_once '../modelo/sesion/session.php';
 
 class Controlador {
 
     private $_camposObligatorios;
 
     public function run() {
-//        $accion = (isset($_POST["accion"]) ? $_POST["accion"] : "");
+
         $accion = $_POST["accion"];
         switch ($accion) {
             case "registrar":
@@ -41,6 +43,11 @@ class Controlador {
                 break;
             case "loguear":
                 $xml = $this->_loguearse();
+                header('Content-Type: text/xml; charset=utf-8');
+                echo $xml;
+                break;
+            case "desloguear":
+                $xml = $this->_desloguearse();
                 header('Content-Type: text/xml; charset=utf-8');
                 echo $xml;
                 break;
@@ -65,7 +72,7 @@ class Controlador {
     private function _listarHorarios() {
         $mensaje = '';
         $fecha = $_POST["fecha"];
-//        $fecha = "2016-06-12";
+        
         $horario = new Horario("", $fecha, "");
         if ($datos = $horario->loadHorarioDisponible($mensaje)) {
             $horarios = "<horarios>";
@@ -86,14 +93,13 @@ class Controlador {
     private function _listarReservas() {
         $mensaje = '';
         $usuario = $_SESSION["usuario"];
-//        $usuario = 1;
 
         $reserva = new Reservas("", "", "", $usuario);
 
         if ($datos = $reserva->loadReserva($mensaje)) {
             $reservas = "<reservas>";
             for ($i = 0; $i < count($datos); $i++) {
-                $reservas .= "<reserva><id>" . $datos[$i]["id_reserva"] . "</id><nombre>" . $datos[$i]["nombre"] . "</nombre><numero>" . $datos[$i]["numero"] . "</numero><fecha>" . $datos2[0]["fecha"] . "</fecha><hora>" . $datos[0]["hora"] . "</hora></reserva>";
+                $reservas .= "<reserva><id>" . $datos[$i]["id_reserva"] . "</id><nombre>" . $datos[$i]["nombre"] . "</nombre><numero>" . $datos[$i]["numero"] . "</numero><fecha>" . $datos[$i]["fecha"] . "</fecha><hora>" . $datos[$i]["hora"] . "</hora></reserva>";
             }
             $reservas .="</reservas>";
             return $reservas;
@@ -109,14 +115,11 @@ class Controlador {
     private function _hacerReservas() {
         $mensaje = '';
         $this->_camposObligatorios = array(["nombre_reserva", "string"], ["numero_comensales", "numero"], ["fecha_final", "fecha"]);
-//        $nombre = "Celia Alonso";
-//        $numero = 3;
-//        $fecha = 42;
-        $usuario = 1;
+
         $nombre = $_POST["nombre"];
         $numero = $_POST["numero"];
         $fecha = $_POST["fecha"];
-//        $usuario = $_SESSION["usuario"];
+        $usuario = $_SESSION["usuario"];
 
         if ($this->_campoValido()) {
             $reserva = new Reservas($nombre, $numero, $fecha, $usuario);
@@ -137,6 +140,7 @@ class Controlador {
     private function _insertarUsuario() {
         $mensaje = '';
         $this->_camposObligatorios = array(["nombre", "string"], ["apellido1", "string"], ["apellido2", "string"], ["nacimiento", "fecha"], ["email", "email"], ["telefono", "telefono"], ["usuario", "letrasNum"], ["contrasenia", "contrasenia"]);
+        
         $nombre = $_POST["nombre"];
         $apellido1 = $_POST["apellido1"];
         $apellido2 = $_POST["apellido2"];
@@ -145,14 +149,6 @@ class Controlador {
         $telefono = $_POST["telefono"];
         $usuario = $_POST["usuario"];
         $contrasenia = $_POST["contrasenia"];
-//        $nombre = "Celia";
-//        $apellido1 = "Ramírez";
-//        $apellido2 = "Fontenla";
-//        $nacimiento = "1996-03-17";
-//        $email = "Cely18@hotmail.com";
-//        $telefono = "916636032";
-//        $usuario = "Zrows";
-//        $contrasenia = "123456789X";
 
         if ($this->_campoValido()) {
 
@@ -177,7 +173,9 @@ class Controlador {
         $cuenta = new Cuenta('', '', '', '', '', '', $usuario, $contrasenia);
 
         if ($datos = $cuenta->loadUsuario($mensaje)) {
-            
+            $sesion = new Session();
+            $sesion->startSession($datos[0]["id_usuario"]);
+            return "<cuenta><correcto>Logueo correcto</correcto></cuenta>";
         } else {
             if ($mensaje) {
                 return $mensaje;
@@ -185,6 +183,11 @@ class Controlador {
                 return "<cuenta><respuesta>No se ha encontrado el usuario con el que intenta acceder.</respuesta></cuenta>";
             }
         }
+    }
+
+    private function _desloguearse() {
+        $sesion = new Session();
+        $sesion->closeSession();
     }
 
     private function _campoValido() {

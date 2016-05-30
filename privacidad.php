@@ -20,6 +20,14 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
+<?php
+session_start();
+if (!isset($_SESSION["usuario"])) {
+    $user = '<a href="registro.php" class="btn boton-header right">Regístrate</a> <a href="acceso.php" class="btn boton-header right">Accede a tu cuenta</a>';
+} else {
+    $user = '<a href="mis_reservas.php" class="right">Mis reservas</a><a href="" class="right" onclick="desloguearse()">Salir</a>';
+}
+?>
 <html>
     <head>
         <title>PISCOLABIS | Política de privacidad</title>
@@ -45,8 +53,7 @@
                         </div>
                         <div class="col-lg-5 col-sm-12 right">
                             <div id="user" class="col-lg-12 col-sm-6">
-                                <a href="registro.html" class="btn boton-header right">Regístrate</a>
-                                <a href="acceso.html" class="btn boton-header right">Accede a tu cuenta</a>
+                                <?php echo $user ?>     
                             </div>
                         </div>
                     </div>
@@ -67,8 +74,8 @@
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="index.html">Inicio</a></li>
-                                <li><a href="reservar.html">Reservar</a></li>
+                                <li><a href="index.php">Inicio</a></li>
+                                <li><a href="reservar.php">Reservar</a></li>
                                 <li><a href="#">Contacto</a></li>
                             </ul>
                         </div>
@@ -79,7 +86,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 migasPan">
-                            <a href="index.html">Inicio</a> > <a href="#" class="estoy">Política de privacidad</a>
+                            <a href="index.php">Inicio</a> > <a href="#" class="estoy">Política de privacidad</a>
                         </div>
                     </div>
                 </div>
@@ -92,13 +99,13 @@
                             <h2><strong>1. Quiénes somos</strong></h2>
                             <p>Piscolabis, con domicilio social en Muntaner, 171, pudiendo contactarse con la empresa, para cualquier cuestión relacionada con este <em>website</em>, en el teléfono 916 547 259 y/o en el Buzón de Correo Electrónico: lopd@grupolive.net.</p>
                             <h2><strong>2. Qué es la web site</strong></h2>
-                            <p>El sitio <a href="index.html">http://www.piscolabis.esy.es/</a> en el cual te encuentras es el espacio interactivo creado por Piscolabis para ofrecer mayor información sobre sus productos y servicios.</p>
+                            <p>El sitio <a href="index.php">http://www.piscolabis.esy.es/</a> en el cual te encuentras es el espacio interactivo creado por Piscolabis para ofrecer mayor información sobre sus productos y servicios.</p>
                             <h2><strong>3. Propiedad de la web y restricciones de uso</strong></h2>
                             <p>Estas Web son propiedad de Piscolabis Todos los nombres de dominio y demás derechos de propiedad intelectual son propiedad de Piscolabis, de tal forma que ningún contenido del mismo podrá ser cedido, copiado, reproducido, publicado, cargado, enviado, transmitido, distribuido o explotado de ninguna manera, excepción hecha de la utilización de las Web y de sus contenidos conforme a la finalidad del mismo, pudiendo realizar descargas y copias estrictamente privadas sin poder realizar ningún uso diferente al estipulado en estas condiciones. Contravenir lo anterior supondrá una violación de los derechos de autor y demás derechos propiedad de Piscolabis La modificación y el uso de los contenidos para fines distintos de los aquí permitidos es una violación de los derechos de autor y demás derechos de propiedad de Piscolabis A los efectos de las presentes condiciones de uso, se prohíbe el uso de los contenidos aquí referidos en cualquier otro Web o red informática.</p>
                             <h2><strong>4. Duración</strong></h2>
                             <p>Las presentes condiciones de uso regirán en tanto en cuanto se mantengan inalterables en el website, reservándose Piscolabis, el derecho a su alteración, modificación o supresión en cualquier momento, debiendo figurar esos cambios en la propia página Web.</p>
                             <h2><strong>5. Política de protección de datos</strong></h2>
-                            <p>La página Web <a href="index.html">http://www.piscolabis.esy.es/</a> tiene como propósito principal informar de los servicios y actividades de la empresa que asume las obligaciones legales en materia de protección de datos de carácter personal, especialmente en lo referido a:</p>
+                            <p>La página Web <a href="index.php">http://www.piscolabis.esy.es/</a> tiene como propósito principal informar de los servicios y actividades de la empresa que asume las obligaciones legales en materia de protección de datos de carácter personal, especialmente en lo referido a:</p>
                             <ul>
                                 <li>La existencia de un fichero o tratamiento de datos de carácter personal.</li>
                                 <li>La finalidad de la recogida de datos.</li>
@@ -108,18 +115,18 @@
                                 <li>La posibilidad de ejercitar los derechos de acceso, rectificación, cancelación y oposición.</li>
                                 <li>La identidad y dirección del responsable del tratamiento o en su caso de su representante.</li>
                             </ul>
-                            <p>Es deseo de <a href="index.html">http://www.piscolabis.esy.es/</a> es que el usuario cuente con la información adecuada para decidir de forma expresa, libre y voluntaria si desea facilitar sus datos en la forma que se requiere. En este sentido se informa al usuario que sus datos serán incorporados a un fichero automatizado, cuyo titular y responsable es Piscolabis, con domicilio en Muntaner, 171, llevándose a cabo un tratamiento automatizado de los mismos cuya finalidad es:</p>
+                            <p>Es deseo de <a href="index.php">http://www.piscolabis.esy.es/</a> es que el usuario cuente con la información adecuada para decidir de forma expresa, libre y voluntaria si desea facilitar sus datos en la forma que se requiere. En este sentido se informa al usuario que sus datos serán incorporados a un fichero automatizado, cuyo titular y responsable es Piscolabis, con domicilio en Muntaner, 171, llevándose a cabo un tratamiento automatizado de los mismos cuya finalidad es:</p>
                             <ul>
                                 <li>Conocer a efectos estadísticos la participación de los usuarios.</li>
                                 <li>Informar al usuario de la existencia de productos y servicios de Piscolabis, y/o empresas pertenecientes al mismo grupo y/o terceras empresas colaboradoras.</li>
                             </ul>
-                            <p>Salvo que se señale lo contrario en cada caso, los datos que se recogen en los formularios son necesarios y obligatorios para poder acceder a los servicios del website o apartado de la Web a que responde. <a href="index.html">Http://www.piscolabis.esy.es/</a> no podrá registrar a los que no faciliten los datos de carácter obligatorio.</p>
+                            <p>Salvo que se señale lo contrario en cada caso, los datos que se recogen en los formularios son necesarios y obligatorios para poder acceder a los servicios del website o apartado de la Web a que responde. <a href="index.php">Http://www.piscolabis.esy.es/</a> no podrá registrar a los que no faciliten los datos de carácter obligatorio.</p>
                             <p>El usuario debe rellenar los formularios con datos verdaderos, exactos y completos, respondiendo de los daños y perjuicios que puedan ocasionar en caso de cumplimentación defectuosa, con datos falsos, inexactos, incompletos o no actualizados.</p>
                             <p>Piscolabis, tiene el compromiso de adoptar los niveles de seguridad de protección de datos personales exigidos en la legislación vigente, instalando al efecto las medidas técnicas y organizativas necesarias para evitar la pérdida, mal uso, alteración, acceso no autorizado y demás riesgos posibles.</p>
                             <p>Piscolabis, se obliga asimismo a cumplir con la obligación de secreto respecto de los datos contenidos en el fichero automatizado establecidos en la legislación vigente.</p>
                             <p>El usuario o persona que lo represente, así como padres o tutores, podrán ejercitar en cualquier momento el derecho de acceso, rectificación, cancelación, y, en su caso, oposición de acuerdo a lo establecido en la Ley Orgánica de Protección de Datos y demás normativas aplicables al efecto, dirigiendo una comunicación escrita a Piscolabis, en las direcciones antes señaladas en la que se acredite la identidad del usuario; por medio del propio website, mediante comunicación a la dirección del buzón: lopd@grupolive.net.</p>
                             <p>Piscolabis, informa que es responsable y titular del fichero, sin perjuicio de que pueda encargar a un tercero la gestión del tratamiento de los mismos, a lo cual los usuarios prestan su consentimiento expreso.</p>
-                            <p>Respecto al uso de Cookies, <a href="index.html">http://www.piscolabis.esy.es/</a> informa al usuario que cuando navega por las diferentes pantallas y páginas de este sitio Web se utilizan cookies, que tienen como objeto reconocer a los usuarios que se hayan registrado y ofrecer un servicio personalizado, además de facilitar información sobre la fecha u hora de la visita, medir algunos parámetros del tráfico dentro del propio sitio Web y estimar el número de visitas realizadas permitiendo informar, enfocar y reajustar los servicios que ofrece en la forma más efectiva. Los cookies utilizados son almacenados en el disco duro del usuario pero no permiten leer los datos contenidos en él, ni leer los archivos cookies creados por otros proveedores.</p>
+                            <p>Respecto al uso de Cookies, <a href="index.php">http://www.piscolabis.esy.es/</a> informa al usuario que cuando navega por las diferentes pantallas y páginas de este sitio Web se utilizan cookies, que tienen como objeto reconocer a los usuarios que se hayan registrado y ofrecer un servicio personalizado, además de facilitar información sobre la fecha u hora de la visita, medir algunos parámetros del tráfico dentro del propio sitio Web y estimar el número de visitas realizadas permitiendo informar, enfocar y reajustar los servicios que ofrece en la forma más efectiva. Los cookies utilizados son almacenados en el disco duro del usuario pero no permiten leer los datos contenidos en él, ni leer los archivos cookies creados por otros proveedores.</p>
                             <p>Los cookies utilizados no son invasivos ni nocivos, pudiendo desactivarse mediante la opción correspondiente que figura en el navegador.</p>
                             <p>Nuestra preocupación prioritaria es la seguridad del almacenamiento de los datos personalmente identificadores del usuario. Ponemos un gran cuidado al transmitir los datos desde el ordenador del usuario a nuestros servidores.</p>
                             <p>Sólo los empleados que necesitan acceder a los datos de los usuarios para realizar su trabajo tienen acceso a los mismos. Cualquier empleado que viole nuestras políticas de protección de datos y/o de seguridad estará sujeto a acciones disciplinarias, incluyendo un posible despido así como la interposición de acciones civiles y/o penales.</p>
@@ -130,10 +137,10 @@
                             <p>De conformidad con lo dispuesto en la Ley Orgánica 15/1999 de 13 de diciembre, le informamos que los datos de carácter personal que nos ha facilitado están recogidos en un fichero denominado “BUZÓN DE SUGERENCIAS”, del que es responsable Piscolabis Este fichero tiene como finalidad la gestión de sugerencias recibidas a través de la página web. Dicho fichero, ha sido notificado a la Agencia Española de Protección de Datos y cuenta con las medidas de seguridad necesarias para garantizar la total seguridad de los datos.</p>
                             <p>Le recordamos la posibilidad de acceder a los datos facilitados, así como de solicitar, en su caso, su rectificación, oposición o cancelación, en los términos establecidos por la Ley indicada, mediante una comunicación escrita al Responsable de Seguridad de Piscolabis indicando el nombre del fichero a través del e-mail: lopd@grupolive.net.</p>
                             <h2><strong>8. Exclusión de responsabilidad en el servicio</strong></h2>
-                            <p>Piscolabis, no será responsable de posibles daños o perjuicios que se pudieran derivar de interferencias, omisiones, interrupciones, virus informáticos, averías telefónicas o desconexiones en el funcionamiento operativo de este sistema electrónico, motivadas por causas ajenas a <a href="index.html">http://www.piscolabis.esy.es/</a>; igualmente, tampoco será responsable de los retrasos o bloqueos que se produzcan en el uso del presente sistema electrónico, causados por deficiencias o sobrecargas de líneas de transmisión, en el sistema de Internet o en otros sistemas electrónicos, así como de los daños que puedan ser causados por terceras personas mediante intromisiones ilegítimas fuera del control de <a href="index.html">http://www.piscolabis.esy.es/</a>.</p>
+                            <p>Piscolabis, no será responsable de posibles daños o perjuicios que se pudieran derivar de interferencias, omisiones, interrupciones, virus informáticos, averías telefónicas o desconexiones en el funcionamiento operativo de este sistema electrónico, motivadas por causas ajenas a <a href="index.php">http://www.piscolabis.esy.es/</a>; igualmente, tampoco será responsable de los retrasos o bloqueos que se produzcan en el uso del presente sistema electrónico, causados por deficiencias o sobrecargas de líneas de transmisión, en el sistema de Internet o en otros sistemas electrónicos, así como de los daños que puedan ser causados por terceras personas mediante intromisiones ilegítimas fuera del control de <a href="index.php">http://www.piscolabis.esy.es/</a>.</p>
                             <p>Piscolabis, se reserva el derecho de suspender el acceso a su Web Site, sin previo aviso, de forma puntual y/o temporal, por razones técnicas o de cualquier otra índole, pudiendo, asimismo, modificar unilateralmente tanto las condiciones de acceso, como la totalidad o parte de los contenidos en ella incluidos.</p>
                             <h2><strong>9. Generales</strong></h2>
-                            <p>Para toda cuestión litigiosa o de incumbencia a la Web de <a href="index.html">http://www.piscolabis.esy.es/</a>, será de aplicación sola y exclusivamente la legislación española, siendo competentes para la resolución de todos los conflictos derivados o relacionados con el uso de esta página Web, los Juzgados y Tribunales de Barcelona (España).
+                            <p>Para toda cuestión litigiosa o de incumbencia a la Web de <a href="index.php">http://www.piscolabis.esy.es/</a>, será de aplicación sola y exclusivamente la legislación española, siendo competentes para la resolución de todos los conflictos derivados o relacionados con el uso de esta página Web, los Juzgados y Tribunales de Barcelona (España).
                         </div>
                     </div>
                 </div>
@@ -143,7 +150,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 enlaces">
-                            <p><a href="privacidad.html">Política de privacidad</a> | <a href="cookies.html">Política de cookies</a> | <a href="mapa_web.html">Mapa web</a></p>
+                            <p><a href="privacidad.php">Política de privacidad</a> | <a href="cookies.php">Política de cookies</a> | <a href="mapa_web.php">Mapa web</a></p>
                         </div>
                     </div>
                     <div class="row">
@@ -160,5 +167,6 @@
         <script src="lib/bootstrap/bootstrap.min.js"></script>
         <script src="lib/jquery/jquery.validate.js"></script>
         <script src="js/registro.js"></script>
+        <script src="js/desloguear.js"></script>
     </body>
 </html>

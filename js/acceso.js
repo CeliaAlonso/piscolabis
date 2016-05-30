@@ -74,24 +74,20 @@ function loguearse() {
 function respuestaLoguearse() {
 
     if (peticion_http.readyState == READY_STATE_COMPLETE && peticion_http.status == STATUS_RIGHT) {
-        
+
         var doc_xml = peticion_http.responseXML;
-        var arrayCuenta = doc_xml.getElementsByTagName("cuenta");
-        var hijoCuenta = arrayCuenta[0].firstChild;
-        
-        if (hijoCuenta.nodeName == "RESPUESTA") {
-            
-//            window.open("confirmado.html",'_self');
+        var cuenta = doc_xml.getElementsByTagName("cuenta")[0];
+
+        if (cuenta.firstChild.nodeName == "RESPUESTA") {
+
+            document.getElementById("resultado").innerHTML = cuenta.firstChild.firstChild.nodeValue;
+
+        } else {
+
             window.location.href = "index.html";
-//            insertar en la pagina confirmado hijoCuenta.firstChild.nodeValue 
-            
-        }else{
-            
-            window.location.href = "error.html";
-//            insertar en la pagina error hijoCuenta.firstChild.nodeValue 
-            
+
         }
-        
+
     }
 
 }

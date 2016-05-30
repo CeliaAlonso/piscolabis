@@ -17,17 +17,16 @@
 
 class Session {
 
-    public function startSession() {
+    public function startSession($id) {
         if ($this->isOpen())
             return;
-        session_start();
-        $_SESSION["usuario"] = true;
+        $_SESSION["usuario"] = $id;
     }
 
     public function closeSession() {
         if (!$this->isOpen())
             return;
-// si no eliminamos la cookie de sesion, la aplicación seguirá funcionando con el mismo valor en la cookie PHPSESSID
+        // si no eliminamos la cookie de sesion, la aplicación seguirá funcionando con el mismo valor en la cookie PHPSESSID
         if (isset($_COOKIE[session_name()])) {
             setcookie(session_name(), "", time() - 3600, "/");
         }
