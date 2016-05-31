@@ -25,7 +25,7 @@ session_start();
 if (!isset($_SESSION["usuario"])) {
     $user = '<a href="registro.php" class="btn boton-header right">Regístrate</a> <a href="acceso.php" class="btn boton-header right">Accede a tu cuenta</a>';
 } else {
-    $user = '<a href="mis_reservas.php" class="right">Mis reservas</a><a href="" class="right" onclick="desloguearse()">Salir</a>';
+    $user = '<a href="mis_reservas.php" class="right noBoton">Mis reservas</a><a href="" class="right noBoton" onclick="desloguearse()">Salir</a>';
 }
 ?>
 <html>

@@ -108,7 +108,7 @@ header div.header img{
     width: 120px;
 }
 
-header #user a{
+header #user a.noBoton{
     padding: 10px; 
 }
 

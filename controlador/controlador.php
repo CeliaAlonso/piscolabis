@@ -72,7 +72,7 @@ class Controlador {
     private function _listarHorarios() {
         $mensaje = '';
         $fecha = $_POST["fecha"];
-        
+
         $horario = new Horario("", $fecha, "");
         if ($datos = $horario->loadHorarioDisponible($mensaje)) {
             $horarios = "<horarios>";
@@ -99,7 +99,9 @@ class Controlador {
         if ($datos = $reserva->loadReserva($mensaje)) {
             $reservas = "<reservas>";
             for ($i = 0; $i < count($datos); $i++) {
-                $reservas .= "<reserva><id>" . $datos[$i]["id_reserva"] . "</id><nombre>" . $datos[$i]["nombre"] . "</nombre><numero>" . $datos[$i]["numero"] . "</numero><fecha>" . $datos[$i]["fecha"] . "</fecha><hora>" . $datos[$i]["hora"] . "</hora></reserva>";
+                $horario = new Horario($datos[$i]["id_fecha"], "", "");
+                $datosHorario = $horario->loadResolverHorarioId($mensaje);
+                $reservas .= "<reserva><id>" . $datos[$i]["id_reserva"] . "</id><nombre>" . $datos[$i]["nombre"] . "</nombre><numero>" . $datos[$i]["numero"] . "</numero><fecha>" . $datosHorario[0]["fecha"] . "</fecha><hora>" . $datosHorario[0]["hora"] . "</hora></reserva>";
             }
             $reservas .="</reservas>";
             return $reservas;
@@ -140,7 +142,7 @@ class Controlador {
     private function _insertarUsuario() {
         $mensaje = '';
         $this->_camposObligatorios = array(["nombre", "string"], ["apellido1", "string"], ["apellido2", "string"], ["nacimiento", "fecha"], ["email", "email"], ["telefono", "telefono"], ["usuario", "letrasNum"], ["contrasenia", "contrasenia"]);
-        
+
         $nombre = $_POST["nombre"];
         $apellido1 = $_POST["apellido1"];
         $apellido2 = $_POST["apellido2"];

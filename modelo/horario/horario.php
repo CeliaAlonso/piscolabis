@@ -88,5 +88,25 @@ class Horario {
         return $bd->modificar($sql, $mensaje);
     }
     
+    private function _resolverHorarioIdLoad() {
+        $bd = new MySQL_horario();
+        $sql = new Sql_horario();
+        $sql->setFuncion("select"); 
+        $base = $bd->getBase();
+        $tb = $bd->getTabla();
+        $tabla = $base . ".$tb";
+        $sql->addTable($tabla);
+        $sql->addSelect("*");
+        $sql->addWhere("id_fecha = :id_fecha");
+        return $sql;
+    }
+
+    public function loadResolverHorarioId(&$mensaje) {
+        $bd = new MySQL_horario();
+        $sql = $this->_resolverHorarioIdLoad();
+        $sql->addEjecutar(":id_fecha", $this->_id_horario);
+        return $bd->ejecutar($sql, $mensaje);
+    }
+    
 }
 ?>
