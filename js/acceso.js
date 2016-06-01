@@ -78,7 +78,7 @@ function respuestaLoguearse() {
         var doc_xml = peticion_http.responseXML;
         var cuenta = doc_xml.getElementsByTagName("cuenta")[0];
 
-        if (cuenta.firstChild.nodeName == "RESPUESTA") {
+        if (cuenta.firstChild.nodeName == "respuesta") {
 
             document.getElementById("resultado").innerHTML = cuenta.firstChild.firstChild.nodeValue;
 

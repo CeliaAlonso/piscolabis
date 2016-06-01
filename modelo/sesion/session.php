@@ -40,6 +40,7 @@ class Session {
         }
         session_unset();
         session_destroy();
+        header("Refresh:0");
     }
 
     public function isOpen() {

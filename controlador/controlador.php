@@ -182,7 +182,7 @@ class Controlador {
             if ($mensaje) {
                 return $mensaje;
             } else {
-                return "<cuenta><respuesta>No se ha encontrado el usuario con el que intenta acceder.</respuesta></cuenta>";
+                return "<cuenta><respuesta>No se ha encontrado el usuario con el que intenta acceder. Usuario o contraseña incorrectos.</respuesta></cuenta>";
             }
         }
     }

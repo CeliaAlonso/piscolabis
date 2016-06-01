@@ -96,7 +96,7 @@ if (!isset($_SESSION["usuario"])) {
                         </div>
                         <div class="col-xs-6 derechaArriba">
                             <h2>¿Qué ofrecemos?</h2>
-                            <p>Somos un grupo de restauración dedicado a la cocina creativa y a los nuevos sabores elaborados con productos frescos y naturales. Buscamos una mezcla entre lo tradicional y lo moderno sin dejar pasar los sabores de siempre.</p>
+                            <p>Te ofrecemos un restaurante fresco y acogedor, donde podrás gozar de una cocina creativa, basada en ingredientes frescos y de temporada con una máxima calidad y excelente servicio. <br> ¿Te lo vas a perder?</p>
                         </div>
                         <div class="col-xs-6 izquierdaAbajo">
                             <h2>¿Dónde estamos?</h2>
