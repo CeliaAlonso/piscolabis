@@ -45,15 +45,15 @@ if (!isset($_SESSION["usuario"])) {
             <header>
                 <div class="container header">
                     <div class="row">
-                        <div class="col-lg-7 col-sm-12">
+                        <div class="col-md-7 col-xs-12">
                             <p>
                                 <img src="images/cloud_s.png" alt="Piscolabis"/>
                                 Piscolabis
                             </p>
                         </div>
-                        <div class="col-lg-5 col-sm-12 right">
-                            <div id="user" class="col-lg-12 col-sm-6">
-                                <?php echo $user ?> 
+                        <div class="col-md-5 col-xs-12 right">
+                            <div id="user" class="col-xs-12">
+                                <?php echo $user ?>     
                             </div>
                         </div>
                     </div>
@@ -86,10 +86,10 @@ if (!isset($_SESSION["usuario"])) {
                 <div class="container formulario">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="errorH">¡Error!</h1>
+                            <h1>Recuerda...</h1>
                         </div>
                         <div class="col-lg-12">
-                            <p id="errores" class="error centrar">Tienes que iniciar sesión con tu cuenta de usuario antes de poder realizar cualquier acción (como reservar)</p>
+                            <p id="errores" class="error centrar">Tienes que iniciar sesión con tu cuenta de usuario antes de poder reservar.</p>
                         </div>
                         <div class="col-lg-12">
                             <p class="centrar">Volver a la página de <a href="index.php">Inicio</a></p>

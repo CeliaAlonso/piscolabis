@@ -45,14 +45,14 @@ if (!isset($_SESSION["usuario"])) {
             <header>
                 <div class="container header">
                     <div class="row">
-                        <div class="col-lg-7 col-sm-12">
+                        <div class="col-md-7 col-xs-12">
                             <p>
                                 <img src="images/cloud_s.png" alt="Piscolabis"/>
                                 Piscolabis
                             </p>
                         </div>
-                        <div class="col-lg-5 col-sm-12 right">
-                            <div id="user" class="col-lg-12 col-sm-6">
+                        <div class="col-md-5 col-xs-12 right">
+                            <div id="user" class="col-xs-12">
                                 <?php echo $user ?>     
                             </div>
                         </div>
@@ -90,21 +90,21 @@ if (!isset($_SESSION["usuario"])) {
                         </div>
                     </div>
                     <div class="row informacion">
-                        <div class="col-xs-6 izquierdaArriba">
+                        <div class="col-sm-6 col-xs-12 izquierdaArriba">
                             <h2>¿Quiénes somos?</h2>
                             <p>Somos un grupo de restauración dedicado a la cocina creativa y a los nuevos sabores elaborados con productos frescos y naturales. Buscamos una mezcla entre lo tradicional y lo moderno sin dejar pasar los sabores de siempre.</p>
                         </div>
-                        <div class="col-xs-6 derechaArriba">
+                        <div class="col-sm-6 col-xs-12 derechaArriba">
                             <h2>¿Qué ofrecemos?</h2>
                             <p>Te ofrecemos un restaurante fresco y acogedor, donde podrás gozar de una cocina creativa, basada en ingredientes frescos y de temporada con una máxima calidad y excelente servicio. <br> ¿Te lo vas a perder?</p>
                         </div>
-                        <div class="col-xs-6 izquierdaAbajo">
+                        <div class="col-sm-6 col-xs-12 izquierdaAbajo">
                             <h2>¿Dónde estamos?</h2>
                             <p>Puedes encontrarnos en C/Marqués de la Valdavia nº115, 28100 (Madrid)</p>
                             <p>Teléfono: 91 663 60 31</p>
                             <p>Email: piscolabis@restaurante.es</p>
                         </div>
-                        <div class="col-xs-6 derechaAbajo">
+                        <div class="col-sm-6 col-xs-12 derechaAbajo">
                             <h2>Horario</h2>
                             <p>De Lunes a Viernes</p>
                             <p>9:00 a 22:00</p>

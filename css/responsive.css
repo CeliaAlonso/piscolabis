@@ -37,6 +37,10 @@
         width: 100%;
         margin: 0px;
     }
+    .right{
+        float: none;
+        text-align: center;
+    }
     h1{
         font-size: 20px;
         margin: 0 0 10px 0; 
@@ -94,6 +98,10 @@
         width: 100%;
         margin: 0px;
     }
+    .right{
+        float: none;
+        text-align: center;
+    }
     header div.header p{
         font-size: 25px;
     }
@@ -140,9 +148,8 @@
         padding: 10px;
     }
     div.izquierdaArriba{
-        border-right: 1px solid #0072BD;
+        border-right: 0px solid #0072BD;
         border-bottom: 1px solid #0072BD;
-        padding-top: 5px;
     }
     div.derechaArriba{
         border-left: 0px solid #0072BD;
@@ -150,7 +157,8 @@
     }
     div.izquierdaAbajo{
         border-top: 0px solid #0072BD;
-        border-right: 1px solid #0072BD;
+        border-right: 0px solid #0072BD;
+        border-bottom: 1px solid #0072BD;
     }
     div.derechaAbajo{
         border-top: 0px solid #0072BD;

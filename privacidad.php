@@ -45,14 +45,14 @@ if (!isset($_SESSION["usuario"])) {
             <header>
                 <div class="container header">
                     <div class="row">
-                        <div class="col-lg-7 col-sm-12">
+                        <div class="col-md-7 col-xs-12">
                             <p>
                                 <img src="images/cloud_s.png" alt="Piscolabis"/>
                                 Piscolabis
                             </p>
                         </div>
-                        <div class="col-lg-5 col-sm-12 right">
-                            <div id="user" class="col-lg-12 col-sm-6">
+                        <div class="col-md-5 col-xs-12 right">
+                            <div id="user" class="col-xs-12">
                                 <?php echo $user ?>     
                             </div>
                         </div>
