@@ -3,7 +3,8 @@
     Fecha = 30/05/2016
     Licencia = GPL v3
     Versión = 1.0
-    Descripción = Sesión
+    Descripción = Crea la sesión que indicará si el usuario ha accedido a su
+    cuenta.
 
     Copyright (C) 2016  Celia Alonso Reguero
 
@@ -24,13 +25,18 @@
 <?php
 
 class Session {
-
+    
+    /* Función: Crea la sesión */
     public function startSession($id) {
         if ($this->isOpen())
             return;
         $_SESSION["usuario"] = $id;
     }
 
+    /* Función: Cierra la sesión 
+     * Para ello elimina tanto la sesión como la cookie y para que sea visible
+     * en la parte del cliente, necesitamos recargar la página
+     */
     public function closeSession() {
         if (!$this->isOpen())
             return;
@@ -43,6 +49,7 @@ class Session {
         header("Refresh:0");
     }
 
+    /* Función: Comprueba si la sesión está abierta  */
     public function isOpen() {
         return isset($_SESSION["usuario"]);
     }

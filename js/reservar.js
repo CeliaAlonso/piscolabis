@@ -3,7 +3,7 @@
  Author     : Celia Alonso Reguero
  */
 
-/* Función que habilita el botón 'Buscar' */
+/* Función que habilita el botón 'Reservar' */
 function habilitarReservar() {
 
     var arrayCampos = new Array();
@@ -24,7 +24,7 @@ function habilitarReservar() {
         document.getElementById("reservar").setAttribute('disabled', 'disabled');
 }
 
-/* FUNCION QUE AÑADE EL ATRIBUTO 'regex' A LA LIBRERIA jquery.validate.js */
+/* Función que añade el atributo 'regex' a la librería jquery.validate.js */
 $.validator.addMethod(
         "regex",
         function (value, element, regexp) {
@@ -33,7 +33,7 @@ $.validator.addMethod(
         },
         "Comprueba el valor de este campo"
         );
-/* FUNCION DE VALIDACIÓN DE LA LIBRERIA jquery.validate.js */
+/* Función de validación de la librería jquery.validate.js */
 $('#formulario_reserva').validate({
     rules: {
         nombre_reserva: {
@@ -133,7 +133,7 @@ function respuestaFechaDisponible() {
 
 }
 
-/* Función que crea los datos que van a ser enviados al servidor */
+/* Función: Crea el query que le mandará a las peticiones AJAX realizadas */
 function crea_query_string(accion) {
 
     var nombre_reserva = document.getElementById("nombre_reserva");
@@ -147,7 +147,12 @@ function crea_query_string(accion) {
     }
 }
 
-/* CONEXIÓN AJAX Función que confirma la reserva seleccionada */
+/* Función: Realizar reserva
+ * Esta función realiza una petición AJAX al archivo controlador.php en el que 
+ * le envía todos los datos de la reserva
+ * La respuesta a la petición AJAX se realiza en la función 
+ * respuestaConfirmarReserva();
+ */
 function confirmarReserva() {
 
     peticion_http = new XMLHttpRequest();
@@ -162,7 +167,11 @@ function confirmarReserva() {
 
 }
 
-/* CONEXIÓN AJAX Función que devuelve si ha sido confirmada la reserva */
+/* Función: Respuesta a la función de realizar reserva
+ * Esta función recibe unos datos mediante XML. En caso de que haya habido 
+ * algún incidente se le mostrará al usuario el error y si no, se mostrará 
+ * que todo ha ido correctamente
+ */
 function respuestaConfirmarReserva() {
 
     if (peticion_http.readyState == READY_STATE_COMPLETE && peticion_http.status == STATUS_RIGHT) {

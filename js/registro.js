@@ -3,6 +3,7 @@
  Author     : Celia Alonso Reguero
  */
 
+/* Función que habilita el botón 'Registrarme' */
 function habilitarRegistro() {
 
     var arrayCampos = new Array();
@@ -29,7 +30,7 @@ function habilitarRegistro() {
 
 }
 
-/* FUNCION QUE AÑADE EL ATRIBUTO 'regex' A LA LIBRERIA jquery.validate.js */
+/* Función que añade el atributo 'regex' a la librería jquery.validate.js */
 $.validator.addMethod(
         "regex",
         function (value, element, regexp) {
@@ -39,7 +40,7 @@ $.validator.addMethod(
         "Comprueba el valor de este campo"
         );
 
-/* FUNCION DE VALIDACIÓN DE LA LIBRERIA jquery.validate.js */
+/* Función de validación de la librería jquery.validate.js */
 $('#formulario_registro').validate({
     rules: {
         nombre: {
@@ -131,6 +132,13 @@ var peticion_http = null;
 var READY_STATE_COMPLETE = 4;
 var STATUS_RIGHT = 200;
 
+/* Función: Registrarse
+ * Esta función realiza una petición AJAX al archivo controlador.php en el que 
+ * le envía todos los datos personales del usuario, el nombre del usuario y la 
+ * contraseña.
+ * La respuesta a la petición AJAX se realiza en la función 
+ * respuestaRegistro();
+ */
 function registro() {
 
     peticion_http = new XMLHttpRequest();
@@ -147,6 +155,11 @@ function registro() {
 
 }
 
+/* Función: Respuesta a la función de registrarse 
+ * Esta función recibe unos datos mediante XML. En caso de que haya habido 
+ * algún incidente se le mostrará al usuario el error y si no, se creará la 
+ * cuenta del usuario
+ */
 function respuestaRegistro() {
 
     if (peticion_http.readyState == READY_STATE_COMPLETE && peticion_http.status == STATUS_RIGHT) {
@@ -159,6 +172,7 @@ function respuestaRegistro() {
 
 }
 
+/* Función: Crea el query que le mandará a las peticiones AJAX realizadas */
 function crea_query_string() {
 
     var nombre = document.getElementById("nombre");

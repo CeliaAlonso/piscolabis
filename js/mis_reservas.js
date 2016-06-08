@@ -6,6 +6,12 @@
 var peticion_http = null;
 var READY_STATE_COMPLETE = 4;
 var STATUS_RIGHT = 200;
+
+/* Función: Ver las reservas
+ * Esta función realiza una petición AJAX al archivo controlador.php
+ * La respuesta a la petición AJAX se realiza en la función 
+ * respuestaVerReservas();
+ */
 function ver_reservas() {
 
     peticion_http = new XMLHttpRequest();
@@ -19,6 +25,12 @@ function ver_reservas() {
 
 }
 
+/* Función: Respuesta a la función de ver las reservas 
+ * Esta función recibe unos datos mediante XML. En el caso de que el usuario no
+ * tenga ninguna reserva hecha, mostrará un mensaje indicándoselo. En caso 
+ * contrario, creará una tabla con los datos de todas las reservas que el 
+ * usuario haya realizado
+ */
 function respuestaVerReservas() {
 
     if (peticion_http.readyState == READY_STATE_COMPLETE && peticion_http.status == STATUS_RIGHT) {

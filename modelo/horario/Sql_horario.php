@@ -3,7 +3,8 @@
     Fecha = 24/05/2016
     Licencia = GPL v3
     Versión = 1.0
-    Descripción = Sql_horario
+    Descripción = Sql_horario, se encarga de generar las setencias SQL para 
+    generar las consultas a la BBDD
 
     Copyright (C) 2016  Celia Alonso Reguero
 

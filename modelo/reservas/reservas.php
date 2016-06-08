@@ -68,6 +68,12 @@ class Reservas {
         $this->_id_usuario = $id_usuario;
     }
 
+    /* Función: Guarda la reserva
+     * Para ello llama a la función _crearReserva() que indica la BBDD y 
+     * la tabla que va a usar, y los valores que se le van a pasar. Esta 
+     * le pasa la acción a la función modificar() que se encargará de hacer 
+     * las peticiones pertinentes para guardar la reserva
+     */
     public function guardarReserva(&$mensaje) {
         $bd = new MySQL_reservas();
         $sql = $this->_crearReserva();
@@ -97,6 +103,12 @@ class Reservas {
         }
     }
 
+    /* Función: Averigua las reservas de un usuario
+     * Para ello llama a la función _reservaLoad() que indica la BBDD y 
+     * la tabla que va a usar, y los valores que se le van a pasar. Esta 
+     * le pasa la acción a la función ejecutar() que se encargará de hacer 
+     * las peticiones pertinentes para averiguar las reservas de ese usuario
+     */
     public function loadReserva(&$mensaje) {
         $bd = new MySQL_reservas();
         $sql = $this->_reservaLoad();

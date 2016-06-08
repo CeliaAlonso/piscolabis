@@ -72,6 +72,12 @@ class Cuenta {
         return $this->_contrasenia;
     }
 
+    /* Función: Crea un usuario
+     * Para ello llama a la función _crearUsuario() que indica la BBDD y 
+     * la tabla que va a usar, y los valores que se le van a pasar. Esta 
+     * le pasa la acción a la función modificar() que se encargará de hacer 
+     * las peticiones pertinentes para crear al usuario
+     */
     public function guardarUsuario(&$mensaje) {
 
         $bd = new MySQL_cuenta();
@@ -113,6 +119,20 @@ class Cuenta {
         return $sql;
     }
 
+    /* Función: Comprueba si existe el usuario
+     * Para ello llama a la función _UsuarioLoad() que indica la BBDD y 
+     * la tabla que va a usar, y los valores que se le van a pasar. Esta 
+     * le pasa la acción a la función ejecutar() que se encargará de hacer 
+     * las peticiones pertinentes para crear al usuario
+     */
+    public function loadUsuario(&$mensaje) {
+        $bd = new MySQL_cuenta();
+        $sql = $this->_UsuarioLoad();
+        $sql->addEjecutar(":nombre_usuario", $this->_nombre_usuario);
+        $sql->addEjecutar(":contrasenia", $this->_contrasenia);
+        return $bd->ejecutar($sql, $mensaje);
+    }
+    
     private function _UsuarioLoad() {
         $bd = new MySQL_cuenta();
         $sql = new Sql_cuenta();
@@ -125,14 +145,6 @@ class Cuenta {
         $sql->addWhere("nombre_usuario = :nombre_usuario");
         $sql->addWhere("contrasenia = :contrasenia");
         return $sql;
-    }
-
-    public function loadUsuario(&$mensaje) {
-        $bd = new MySQL_cuenta();
-        $sql = $this->_UsuarioLoad();
-        $sql->addEjecutar(":nombre_usuario", $this->_nombre_usuario);
-        $sql->addEjecutar(":contrasenia", $this->_contrasenia);
-        return $bd->ejecutar($sql, $mensaje);
     }
     
 }

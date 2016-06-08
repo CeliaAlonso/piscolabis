@@ -1,8 +1,12 @@
 /* 
     Created on : 16/05/2016
     Author     : Celia Alonso Reguero
+    Description: CSS para las páginas secundarias
 */
 
+/* ESTILOS DE LAS PÁGINAS SECUNDARIAS */
+
+/* ESTILOS DE LOS FORMULARIOS */
 .formulario{
     width: 80%;
     color: #000000; 
@@ -29,10 +33,12 @@
     margin-right: 40px;
 }
 
+/* ESTILOS DE LOS BOTONES DE LOS FORMULARIOS */
 .botonFormulario{
     text-align: center;
 }
 
+/* ESTILOS DEL CONTENIDO DE LAS PÁGINAS SECUNDARIAS */
 .contenido{
     width: 80%;
     color: #000000; 

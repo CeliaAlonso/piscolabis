@@ -1,6 +1,7 @@
 /* 
     Created on : 19/05/2016
     Author     : Celia Alonso Reguero
+    Description: CSS for differents devices
 */
 
 /* Large Devices, Desktops */
@@ -25,7 +26,7 @@
         margin-left: 35px;
     }
 }
-/* Medium Devices, Desktops */
+/* Medium Devices, Desktops, Tablets */
 @media only screen and (min-width: 768px) and (max-width: 992px){
     html,body{
         font-size: 13px;
@@ -86,7 +87,7 @@
         font-size: 10px;
     }
 }
-/* Small Devices, Tablets */
+/* Small Devices */
 @media only screen and (max-width:767px) {
     html,body{
         font-size: 12px;

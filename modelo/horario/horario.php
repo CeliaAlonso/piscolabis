@@ -47,10 +47,23 @@ class Horario {
         return $this->_hora;
     }
 
+    /* Función: Comprueba los horarios disponibles
+     * Para ello llama a la función _horarioDisponibleLoad() que indica la 
+     * BBDD y la tabla que va a usar, y los valores que se le van a pasar. 
+     * Esta le pasa la acción a la función ejecutar() que se encargará de hacer 
+     * las peticiones pertinentes para averiguar los horarios disponibles
+     */
+    public function loadHorarioDisponible(&$mensaje) {
+        $bd = new MySQL_horario();
+        $sql = $this->_horarioDisponibleLoad();
+        $sql->addEjecutar(":fecha", $this->_fecha);
+        return $bd->ejecutar($sql, $mensaje);
+    }
+
     private function _horarioDisponibleLoad() {
         $bd = new MySQL_horario();
         $sql = new Sql_horario();
-        $sql->setFuncion("select"); 
+        $sql->setFuncion("select");
         $base = $bd->getBase();
         $tb = $bd->getTabla();
         $tabla = $base . ".$tb";
@@ -61,17 +74,23 @@ class Horario {
         return $sql;
     }
 
-    public function loadHorarioDisponible(&$mensaje) {
+    /* Función: Modifica los horarios disponibles a reservados
+     * Para ello llama a la función _horarioReservadoLoad() que indica la 
+     * BBDD y la tabla que va a usar, y los valores que se le van a pasar. 
+     * Esta le pasa la acción a la función modificar() que se encargará de hacer 
+     * las peticiones pertinentes para que ese horario salga como reservado
+     */
+    public function loadHorarioReservado(&$mensaje) {
         $bd = new MySQL_horario();
-        $sql = $this->_horarioDisponibleLoad();
-        $sql->addEjecutar(":fecha", $this->_fecha);
-        return $bd->ejecutar($sql, $mensaje);
+        $sql = $this->_horarioReservadoLoad();
+        $sql->addEjecutar(":id_fecha", $this->_id_horario);
+        return $bd->modificar($sql, $mensaje);
     }
 
     private function _horarioReservadoLoad() {
         $bd = new MySQL_horario();
         $sql = new Sql_horario();
-        $sql->setFuncion("update"); 
+        $sql->setFuncion("update");
         $base = $bd->getBase();
         $tb = $bd->getTabla();
         $tabla = $base . ".$tb";
@@ -81,17 +100,23 @@ class Horario {
         return $sql;
     }
 
-    public function loadHorarioReservado(&$mensaje) {
+    /* Función: Averiguar la fecha y la hora de ese id_fecha
+     * Para ello llama a la función _resolverHorarioIdLoad() que indica la 
+     * BBDD y la tabla que va a usar, y los valores que se le van a pasar. 
+     * Esta le pasa la acción a la función ejecutar() que se encargará de hacer 
+     * las peticiones pertinentes para averiguar la fecha y la hora de ese id
+     */
+    public function loadResolverHorarioId(&$mensaje) {
         $bd = new MySQL_horario();
-        $sql = $this->_horarioReservadoLoad();
+        $sql = $this->_resolverHorarioIdLoad();
         $sql->addEjecutar(":id_fecha", $this->_id_horario);
-        return $bd->modificar($sql, $mensaje);
+        return $bd->ejecutar($sql, $mensaje);
     }
-    
+
     private function _resolverHorarioIdLoad() {
         $bd = new MySQL_horario();
         $sql = new Sql_horario();
-        $sql->setFuncion("select"); 
+        $sql->setFuncion("select");
         $base = $bd->getBase();
         $tb = $bd->getTabla();
         $tabla = $base . ".$tb";
@@ -101,12 +126,5 @@ class Horario {
         return $sql;
     }
 
-    public function loadResolverHorarioId(&$mensaje) {
-        $bd = new MySQL_horario();
-        $sql = $this->_resolverHorarioIdLoad();
-        $sql->addEjecutar(":id_fecha", $this->_id_horario);
-        return $bd->ejecutar($sql, $mensaje);
-    }
-    
 }
 ?>

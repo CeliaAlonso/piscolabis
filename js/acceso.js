@@ -3,7 +3,7 @@
  Author     : Celia Alonso Reguero
  */
 
-/* FUNCION QUE AÑADE EL ATRIBUTO 'regex' A LA LIBRERIA jquery.validate.js */
+/* Función que añade el atributo 'regex' a la librería jquery.validate.js */
 $.validator.addMethod(
         "regex",
         function (value, element, regexp) {
@@ -13,7 +13,7 @@ $.validator.addMethod(
         "Comprueba el valor de este campo"
         );
 
-/* FUNCION DE VALIDACIÓN DE LA LIBRERIA jquery.validate.js */
+/* Función de validación de la librería jquery.validate.js */
 $('#formulario_acceso').validate({
     rules: {
         usuario: {
@@ -55,6 +55,12 @@ var peticion_http = null;
 var READY_STATE_COMPLETE = 4;
 var STATUS_RIGHT = 200;
 
+/* Función: Acceder a la cuenta del usuario 
+ * Esta función realiza una petición AJAX al archivo controlador.php en el que 
+ * le envía el nombre del usuario y la contraseña.
+ * La respuesta a la petición AJAX se realiza en la función 
+ * respuestaLoguearse();
+ */
 function loguearse() {
 
     peticion_http = new XMLHttpRequest();
@@ -71,9 +77,15 @@ function loguearse() {
 
 }
 
+/* Función: Respuesta a la función de acceder a la cuenta del usuario 
+ * Esta función recibe unos datos mediante XML. En caso de que haya habido 
+ * algún incidente se le mostrará al usuario el error y si no, se accederá a la 
+ * cuenta y se le redireccionará a la página de Inicio de la web
+ */
 function respuestaLoguearse() {
 
-    if (peticion_http.readyState == READY_STATE_COMPLETE && peticion_http.status == STATUS_RIGHT) {
+    if (peticion_http.readyState == READY_STATE_COMPLETE &&
+            peticion_http.status == STATUS_RIGHT) {
 
         var doc_xml = peticion_http.responseXML;
         var cuenta = doc_xml.getElementsByTagName("cuenta")[0];
@@ -92,11 +104,13 @@ function respuestaLoguearse() {
 
 }
 
+/* Función: Crea el query que le mandará a las peticiones AJAX realizadas */
 function crea_query_string() {
 
     var usuario = document.getElementById("usuario");
     var contrasenia = document.getElementById("contrasenia");
 
-    return "accion=loguear&usuario=" + encodeURIComponent(usuario.value) + "&contrasenia=" + encodeURIComponent(contrasenia.value);
+    return "accion=loguear&usuario=" + encodeURIComponent(usuario.value) + 
+            "&contrasenia=" + encodeURIComponent(contrasenia.value);
 
 }

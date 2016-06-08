@@ -1,13 +1,17 @@
 /* 
     Created on : 16/05/2016
     Author     : Celia Alonso Reguero
+    Description: CSS para index.php
 */
 
 /* ESTILOS DE LA PÁGINA INICIO */
+
+/* ESTILO DE LA IMAGEN DE LA PÁGINA INICIO */
 .imagenInicio img{
     width: 100%;
 }
 
+/* ESTILO DE LA PARTE INFORMATIVA DE LA PÁGINA INICIO */
 main .container>.row.informacion{
     width: 100%;
     margin: 0 auto;

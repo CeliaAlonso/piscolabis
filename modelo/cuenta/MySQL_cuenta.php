@@ -3,7 +3,7 @@
     Fecha = 24/05/2016
     Licencia = GPL v3
     Versión = 1.0
-    Descripción = MySQL_cuenta
+    Descripción = MySQL_cuenta, se encarga de conectar con la BBDD
 
     Copyright (C) 2016  Celia Alonso Reguero
 
