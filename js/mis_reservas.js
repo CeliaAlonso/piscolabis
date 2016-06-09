@@ -46,7 +46,7 @@ function respuestaVerReservas() {
             if (reserva.length == 0) {
                 tabla = "<p class='centrar'>No ha realizado ninguna reserva</p>";
             } else {
-                tabla = "<table class='table table-bordered'> <thead> <tr> <th>Identificador</th> <th>Nombre de la reserva</th> <th>Número de comensales</th> <th>Fecha</th> <th>Hora</th> </tr> </thead> <tbody>";
+                tabla = "<div class='col-lg-12 table-responsive'><table class='table table-bordered'> <thead> <tr> <th>Identificador</th> <th>Nombre de la reserva</th> <th>Número de comensales</th> <th>Fecha</th> <th>Hora</th> </tr> </thead> <tbody>";
                 var contenido = "";
                 for (var i = 0; i < reserva.length; i++) {
                     var id = reserva[i].getElementsByTagName('id')[0].firstChild.nodeValue;
@@ -56,7 +56,7 @@ function respuestaVerReservas() {
                     var hora = reserva[i].getElementsByTagName('hora')[0].firstChild.nodeValue;
                     contenido += "<tr> <td>" + id + "</td> <td>" + nombre + "</td> <td>" + numero + "</td> <td>" + fecha + "</td> <td>" + hora + "</td> </tr>";
                 }
-                tabla += contenido + "</tbody> </table>";
+                tabla += contenido + "</tbody> </table> </div>";
             }
             document.getElementById("reservas").innerHTML = tabla;
 

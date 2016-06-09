@@ -38,6 +38,7 @@ class Controlador {
      * Recoge la variable accion que le hemos pasado por POST desde la parte 
      * cliente y dependiendo de su valor, llamará a unas funciones o a otras
      */
+
     public function run() {
 
         $accion = $_POST["accion"];
@@ -76,6 +77,7 @@ class Controlador {
     }
 
     /* Función: Lista los horarios que hay disponibles */
+
     private function _listarHorarios() {
         $mensaje = '';
         $fecha = $_POST["fecha"];
@@ -98,6 +100,7 @@ class Controlador {
     }
 
     /* Función: Lista las reservas del usuario */
+
     private function _listarReservas() {
         $mensaje = '';
         $usuario = $_SESSION["usuario"];
@@ -125,6 +128,7 @@ class Controlador {
     /* Función: Realiza la reserva que desea hacer el usuario
      * En este caso tendremos que validar si los datos enviados son correctos
      */
+
     private function _hacerReservas() {
         $mensaje = '';
         $this->_camposObligatorios = array(["nombre_reserva", "string"], ["numero_comensales", "numero"], ["fecha_final", "fecha"]);
@@ -153,6 +157,7 @@ class Controlador {
     /* Función: Crear un usuario
      * En este caso tendremos que validar si los datos enviados son correctos
      */
+
     private function _insertarUsuario() {
         $mensaje = '';
         $this->_camposObligatorios = array(["nombre", "string"], ["apellido1", "string"], ["apellido2", "string"], ["nacimiento", "fecha"], ["email", "email"], ["telefono", "telefono"], ["usuario", "letrasNum"], ["contrasenia", "contrasenia"]);
@@ -174,17 +179,24 @@ class Controlador {
                 return "<cuenta><respuesta>Su cuenta de usuario ha sido creada correctamente.</respuesta></cuenta>";
             } else {
                 if ($mensaje) {
-                    return "<cuenta><respuesta>" . $mensaje . "</respuesta></cuenta>";
+                    if (strpos($mensaje, 'UQ_USUARIOS_email') !== False) {
+                        return "<cuenta><respuesta>Ya hay una cuenta asociada a ese correo electrónico.</respuesta></cuenta>";
+                    } elseif (strpos($mensaje, 'UQ_USUARIOS_nombre_usuario') !== False) {
+                        return "<cuenta><respuesta>Ese nombre de usuario ya existe. Por favor, introduce otro.</respuesta></cuenta>";
+                    } else {
+                        return "<cuenta><respuesta>" . $mensaje . "</respuesta></cuenta>";
+                    }
                 } else {
                     return "<cuenta><respuesta>El registro no se ha podido realizar con éxito</respuesta></cuenta>";
                 }
             }
         }
     }
-    
+
     /* Función: Busca si el usuario y la contraseña que le ha enviado la parte 
      * del cliente existen en la BBDD
      */
+
     private function _loguearse() {
         $mensaje = '';
         $usuario = $_POST["usuario"];
@@ -205,6 +217,7 @@ class Controlador {
     }
 
     /* Función: Destruye la sesión del usuario */
+
     private function _desloguearse() {
         $sesion = new Session();
         $sesion->closeSession();
@@ -213,6 +226,7 @@ class Controlador {
     /* Función: Valida los datos que se le pasan dependiendo de qué tipo de 
      * campo sea (si sólo admite letras, números, si es un email...)
      */
+
     private function _campoValido() {
         foreach ($this->_camposObligatorios as $arr) {
             if ($_POST[$arr[0]]) {
@@ -259,14 +273,16 @@ class Controlador {
      * expresión regular
      * --> Sólo letras <--
      */
+
     private function _esLetras($str) {
         return preg_match("/^[a-zA-ZÁÉÍÓÚáéíóú ]{1,30}$/", $_POST[$str]);
     }
-    
+
     /* Función: Comprueba si el valor introducido se corresponde con la 
      * expresión regular
      * --> Sólo números <--
      */
+
     private function _esNumero($num) {
         return preg_match("/^[0-9]{1,30}$/", $_POST[$str]);
     }
@@ -275,6 +291,7 @@ class Controlador {
      * expresión regular
      * --> Sólo letras y números <--
      */
+
     private function _esLetrasNum($str) {
         return preg_match("/^[a-z\d_]{4,15}$/i", $_POST[$str]);
     }
@@ -283,6 +300,7 @@ class Controlador {
      * expresión regular
      * --> Sólo el formato de fecha <--
      */
+
     private function _esFecha($fec) {
         return preg_match("/\d{4}\-\d{2}-\d{2}/", $_POST[$fec]);
     }
@@ -291,6 +309,7 @@ class Controlador {
      * expresión regular
      * --> Sólo el formato de hora <--
      */
+
     private function _esHora($hora) {
         return preg_match("/\d{2}\:\d{2}:\d{2}/", $_POST[$hora]);
     }
@@ -299,6 +318,7 @@ class Controlador {
      * expresión regular
      * --> Sólo formato de email <--
      */
+
     private function _esEmail($em) {
         return preg_match("/^(\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w*)*)/", $_POST[$em]);
     }
@@ -307,6 +327,7 @@ class Controlador {
      * expresión regular
      * --> Sólo formato del teléfono (en España) <--
      */
+
     private function _esTelefono($num) {
         return preg_match("/^([69])\d{8}$/", $_POST[$num]);
     }
@@ -315,6 +336,7 @@ class Controlador {
      * expresión regular
      * --> Sólo el formato de las contraseñas <--
      */
+
     private function _esContrasenia($cont) {
         return preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,15}$/", $_POST[$cont]);
     }

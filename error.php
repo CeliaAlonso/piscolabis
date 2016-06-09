@@ -76,7 +76,7 @@ if (!isset($_SESSION["usuario"])) {
                             <ul class="nav navbar-nav">
                                 <li><a href="index.php">Inicio</a></li>
                                 <li><a href="reservar.php">Reservar</a></li>
-                                <li><a href="contacto.php">Contacto</a></li>
+                                <li><a href="#">Contacto</a></li>
                             </ul>
                         </div>
                 </nav>
