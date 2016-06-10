@@ -3,7 +3,8 @@
     Fecha = 17/05/2016
     Licencia = GPL v3
     Versión = 1.0
-    Descripción = Página de error de Piscolabis
+    Descripción = Página de error cuando se intenta acceder a Reservar sin 
+    loguearse de Piscolabis
 
     Copyright (C) 2016  Celia Alonso Reguero
 

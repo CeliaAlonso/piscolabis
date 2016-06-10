@@ -3,7 +3,7 @@
  Author     : Celia Alonso Reguero
  */
 
-/* Función que habilita el botón 'Reservar' */
+/* Función que habilita el botón 'Enviar' */
 function habilitarEnviar() {
 
     var arrayCampos = new Array();

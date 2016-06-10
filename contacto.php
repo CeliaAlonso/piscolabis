@@ -3,7 +3,7 @@
     Fecha = 16/05/2016
     Licencia = GPL v3
     Versión = 1.0
-    Descripción = Reservar de Piscolabis
+    Descripción = Contacto de Piscolabis
 
     Copyright (C) 2016  Celia Alonso Reguero
 
