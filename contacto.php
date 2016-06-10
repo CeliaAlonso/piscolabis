@@ -3,7 +3,7 @@
     Fecha = 16/05/2016
     Licencia = GPL v3
     Versión = 1.0
-    Descripción = Página de 'Mis reservas' de Piscolabis
+    Descripción = Reservar de Piscolabis
 
     Copyright (C) 2016  Celia Alonso Reguero
 
@@ -24,14 +24,13 @@
 session_start();
 if (!isset($_SESSION["usuario"])) {
     $user = '<a href="registro.php" class="btn boton-header right">Regístrate</a> <a href="acceso.php" class="btn boton-header right">Accede a tu cuenta</a>';
-    header('Location: error.php');
 } else {
     $user = '<a href="mis_reservas.php" class="right noBoton">Mis reservas</a><a href="" class="right noBoton" onclick="desloguearse()">Salir</a>';
 }
 ?>
 <html>
     <head>
-        <title>PISCOLABIS | Mis reservas</title>
+        <title>PISCOLABIS | Contacto</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="images/cloud_s.png" type="image/gif">
@@ -77,7 +76,7 @@ if (!isset($_SESSION["usuario"])) {
                             <ul class="nav navbar-nav">
                                 <li><a href="index.php">Inicio</a></li>
                                 <li><a href="reservar.php">Reservar</a></li>
-                                <li><a href="contacto.php">Contacto</a></li>
+                                <li><a href="#" class="active">Contacto</a></li>
                             </ul>
                         </div>
                 </nav>
@@ -87,16 +86,75 @@ if (!isset($_SESSION["usuario"])) {
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 migasPan">
-                            <a href="index.php">Inicio</a> > <a href="#" class="estoy">Mis reservas</a>
+                            <a href="index.php">Inicio</a> > <a href="#" class="estoy">Contacto</a>
                         </div>
                     </div>
-                </div>
-                <div class="container contenido">
+                    <div class="container formulario">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h1>¿Qué quieres comunicarnos?</h1>
+                                    </div>
+                                </div>
+                                <form id="formulario_contacto" class="form-horizontal" role="form"> 
+                                    <div class="row form-group">
+                                        <div class="col-lg-12">
+                                            <label for="nombre" class="control-label">Nombre</label>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <input type="text" name="nombre" id="nombre" class="form-control" oninput="habilitarEnviar()" placeholder="Nombre" required="">
+                                            <span id="nombre0" class="form-control-feedback"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-lg-12">
+                                            <label for="apellido1" class="control-label">Primer apellido</label>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <input type="text" name="apellido1" id="apellido1" class="form-control" oninput="habilitarEnviar()" placeholder="Primer apellido" required="">
+                                            <span id="apellido10" class="form-control-feedback"></span>
+                                        </div>
+                                    </div>
+                                    <div id="busqueda" class="row form-group">
+                                        <div class="col-lg-12">
+                                            <label for="apellido2" class="control-label">Segundo apellido</label>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <input type="text" name="apellido2" id="apellido2" class="form-control" oninput="habilitarEnviar()" placeholder="Segundo apellido" required="">
+                                            <span id="apellido20" class="form-control-feedback"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-lg-12">
+                                            <label for="email" class="control-label">Email de contacto</label>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <input type="text" name="email" id="email" class="form-control" oninput="habilitarEnviar()" placeholder="Email" required="">
+                                            <span id="email0" class="form-control-feedback"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-lg-12">
+                                            <label for="mensaje" class="control-label">Email de contacto</label>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <textarea name="mensaje" id="mensaje" class="form-control" oninput="habilitarEnviar()" placeholder="Introduce el mensaje que nos quieres hacer llegar" required=""></textarea>
+                                            <span id="mensaje0" class="form-control-feedback"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group botonFormulario">
+                                        <div class="col-lg-12">
+                                            <button type="button" id="enviar" class="btn" disabled="">Enviar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1>Mis reservas</h1>
-                        </div>
-                        <div id="reservas" class="col-lg-12">
+                            <h1 id="resultado"></h1>
                         </div>
                     </div>
                 </div>
@@ -122,7 +180,7 @@ if (!isset($_SESSION["usuario"])) {
         <script src="lib/jquery/jquery.min.js"></script>
         <script src="lib/bootstrap/bootstrap.min.js"></script>
         <script src="lib/jquery/jquery.validate.js"></script>
-        <script src="js/mis_reservas.js"></script>
+        <script src="js/contacto.js"></script>
         <script src="js/desloguear.js"></script>
     </body>
 </html>

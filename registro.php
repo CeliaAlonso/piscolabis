@@ -76,7 +76,7 @@ if (!isset($_SESSION["usuario"])) {
                             <ul class="nav navbar-nav">
                                 <li><a href="index.php">Inicio</a></li>
                                 <li><a href="reservar.php">Reservar</a></li>
-                                <li><a href="#">Contacto</a></li>
+                                <li><a href="contacto.php">Contacto</a></li>
                             </ul>
                         </div>
                 </nav>
@@ -103,7 +103,7 @@ if (!isset($_SESSION["usuario"])) {
                                             <label for="nombre" class="control-label">Nombre</label>
                                         </div>
                                         <div class="col-lg-12">
-                                            <input type="text" name="nombre" id="nombre" class="form-control" oninput="habilitarRegistro()" pattern="/^([a-zA-ZÁÉÍÓÚáéíóú ]{1,30})+$/" placeholder="Nombre" required="">
+                                            <input type="text" name="nombre" id="nombre" class="form-control" oninput="habilitarRegistro()" placeholder="Nombre" required="">
                                             <span id="nombre0" class="form-control-feedback"></span>
                                         </div>
                                     </div>

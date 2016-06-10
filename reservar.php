@@ -24,14 +24,13 @@
 session_start();
 if (!isset($_SESSION["usuario"])) {
     $user = '<a href="registro.php" class="btn boton-header right">Regístrate</a> <a href="acceso.php" class="btn boton-header right">Accede a tu cuenta</a>';
-    header('Location: error.php');
 } else {
     $user = '<a href="mis_reservas.php" class="right noBoton">Mis reservas</a><a href="" class="right noBoton" onclick="desloguearse()">Salir</a>';
 }
 ?>
 <html>
     <head>
-        <title>PISCOLABIS | Reservar</title>
+        <title>PISCOLABIS | Contacto</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="images/cloud_s.png" type="image/gif">
@@ -76,8 +75,8 @@ if (!isset($_SESSION["usuario"])) {
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li><a href="index.php">Inicio</a></li>
-                                <li><a href="#" class="active">Reservar</a></li>
-                                <li><a href="#">Contacto</a></li>
+                                <li><a href="reservar.php">Reservar</a></li>
+                                <li><a href="contacto.php" class="active">Contacto</a></li>
                             </ul>
                         </div>
                 </nav>
@@ -87,7 +86,7 @@ if (!isset($_SESSION["usuario"])) {
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 migasPan">
-                            <a href="index.php">Inicio</a> > <a href="#" class="estoy">Reservas</a>
+                            <a href="index.php">Inicio</a> > <a href="#" class="estoy">Contacto</a>
                         </div>
                     </div>
                     <div class="container formulario">
@@ -95,46 +94,44 @@ if (!isset($_SESSION["usuario"])) {
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <h1>¿Quieres reservar?</h1>
+                                        <h1>¿Qué quieres comunicarnos?</h1>
                                     </div>
                                 </div>
                                 <form id="formulario_reserva" class="form-horizontal" role="form"> 
                                     <div class="row form-group">
                                         <div class="col-lg-12">
-                                            <label for="nombre_reserva" class="control-label">Nombre de la reserva</label>
+                                            <label for="nombre" class="control-label">Nombre</label>
                                         </div>
                                         <div class="col-lg-12">
-                                            <input type="text" name="nombre_reserva" id="nombre_reserva" class="form-control" oninput="habilitarReservar()" pattern="/^([a-zA-ZÁÉÍÓÚáéíóú ]{1,30})+$/" placeholder="Nombre de la reserva" required="">
-                                            <span id="nombre_reserva0" class="form-control-feedback"></span>
+                                            <input type="text" name="nombre" id="nombre" class="form-control" oninput="habilitarEnviar()" placeholder="Nombre" required="">
+                                            <span id="nombre0" class="form-control-feedback"></span>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col-lg-12">
-                                            <label for="numero_comensales" class="control-label">Número de comensales</label>
+                                            <label for="apellido1" class="control-label">Primer apellido</label>
                                         </div>
                                         <div class="col-lg-12">
-                                            <input type="number" name="numero_comensales" id="numero_comensales" class="form-control" oninput="habilitarReservar()" min="1" max="10" placeholder="Número de comensales" required="">
-                                            <span id="numero_comensales0" class="form-control-feedback"></span>
-                                        </div>
-                                    </div>
-                                    <div id="busqueda" class="row form-group">
-                                        <div class="col-lg-12">
-                                            <label for="fecha_reserva" class="control-label">Fecha de la reserva</label>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <input type="date" name="fecha_reserva" id="fecha_reserva" class="form-control" oninput="habilitarReservar()" onchange="buscarFechaDisponible()" required="">
-                                            <span id="fecha_reserva0" class="form-control-feedback"></span>
+                                            <input type="text" name="apellido1" id="apellido1" class="form-control" oninput="habilitarEnviar()" placeholder="Primer apellido" required="">
+                                            <span id="apellido10" class="form-control-feedback"></span>
                                         </div>
                                     </div>
                                     <div id="busqueda" class="row form-group">
                                         <div class="col-lg-12">
-                                            <label for="hora_reserva" class="control-label">Hora de la reserva</label>
+                                            <label for="apellido2" class="control-label">Segundo apellido</label>
                                         </div>
                                         <div class="col-lg-12">
-                                            <select name="hora_reserva" id="hora_reserva" class="form-control" onchange="habilitarReservar()" required="">
-
-                                            </select>
-                                            <span id="hora_reserva0" class="form-control-feedback"></span>
+                                            <input type="text" name="apellido2" id="apellido2" class="form-control" oninput="habilitarEnviar()" placeholder="Segundo apellido" required="">
+                                            <span id="apellido20" class="form-control-feedback"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-lg-12">
+                                            <label for="email" class="control-label">Email de contacto</label>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <input type="text" name="email" id="email" class="form-control" oninput="habilitarEnviar()" placeholder="Email" required="">
+                                            <span id="email0" class="form-control-feedback"></span>
                                         </div>
                                     </div>
                                     <div id="busqueda" class="row form-group botonFormulario">

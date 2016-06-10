@@ -1,9 +1,9 @@
 <!--
     Autor = Celia Alonso Reguero
-    Fecha = 16/05/2016
+    Fecha = 17/05/2016
     Licencia = GPL v3
     Versión = 1.0
-    Descripción = Página de 'Mis reservas' de Piscolabis
+    Descripción = Página de error de Piscolabis
 
     Copyright (C) 2016  Celia Alonso Reguero
 
@@ -24,14 +24,13 @@
 session_start();
 if (!isset($_SESSION["usuario"])) {
     $user = '<a href="registro.php" class="btn boton-header right">Regístrate</a> <a href="acceso.php" class="btn boton-header right">Accede a tu cuenta</a>';
-    header('Location: error.php');
 } else {
     $user = '<a href="mis_reservas.php" class="right noBoton">Mis reservas</a><a href="" class="right noBoton" onclick="desloguearse()">Salir</a>';
 }
 ?>
 <html>
     <head>
-        <title>PISCOLABIS | Mis reservas</title>
+        <title>PISCOLABIS</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="images/cloud_s.png" type="image/gif">
@@ -84,19 +83,16 @@ if (!isset($_SESSION["usuario"])) {
             </div>
             <!-- CONTENIDO DE LA PÁGINA WEB -->
             <main>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 migasPan">
-                            <a href="index.php">Inicio</a> > <a href="#" class="estoy">Mis reservas</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="container contenido">
+                <div class="container formulario">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1>Mis reservas</h1>
+                            <h1>Recuerda...</h1>
                         </div>
-                        <div id="reservas" class="col-lg-12">
+                        <div class="col-lg-12">
+                            <p id="errores" class="error centrar">Tienes que iniciar sesión con tu cuenta de usuario antes de poder reservar.</p>
+                        </div>
+                        <div class="col-lg-12">
+                            <p class="centrar">Volver a la página de <a href="index.php">Inicio</a></p>
                         </div>
                     </div>
                 </div>
@@ -122,7 +118,7 @@ if (!isset($_SESSION["usuario"])) {
         <script src="lib/jquery/jquery.min.js"></script>
         <script src="lib/bootstrap/bootstrap.min.js"></script>
         <script src="lib/jquery/jquery.validate.js"></script>
-        <script src="js/mis_reservas.js"></script>
+        <script src="js/acceso.js"></script>
         <script src="js/desloguear.js"></script>
     </body>
 </html>
