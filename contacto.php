@@ -154,7 +154,7 @@ if (!isset($_SESSION["usuario"])) {
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 id="resultado"></h1>
+                            <h1 id="resultado" class="errorH"></h1>
                         </div>
                     </div>
                 </div>
