@@ -13,7 +13,7 @@ function habilitarReservar() {
     arrayCampos.push(document.getElementById("hora_reserva").value.length);
     var camposRellenados = true;
     for (var i = 0; i < arrayCampos.length; i++)
-        if (arrayCampos[i] <= 0) {
+        if (arrayCampos[i] <= 0 || document.getElementById("hora_reserva").value==0) {
             camposRellenados = false;
             break;
         }
@@ -114,19 +114,28 @@ function respuestaFechaDisponible() {
     if (peticion_http.readyState == READY_STATE_COMPLETE && peticion_http.status == STATUS_RIGHT) {
 
         var doc_xml = peticion_http.responseXML;
+        var html_hora = document.getElementById("hora_reserva");
         var respuesta = doc_xml.getElementsByTagName("horarios")[0];
         if (respuesta.firstChild.nodeName == "RESPUESTA") {
             document.getElementById("hora_reserva0").innerHTML = respuesta.firstChild.nodeValue;
         } else {
             var contenido = "";
             var horario = respuesta.getElementsByTagName("horario");
-            for (var i = 0; i < horario.length; i++) {
-                var id = horario[i].getElementsByTagName('id')[0].firstChild.nodeValue;
-                var hora = horario[i].getElementsByTagName('hora')[0].firstChild.nodeValue;
-                contenido += "<option value='" + id + "'>" + hora + "</option>";
+
+            if (horario.length > 0) {
+                html_hora.removeAttribute("readonly");
+                contenido = "<option value='0'>--Seleccione una hora--</option>";
+                for (var i = 0; i < horario.length; i++) {
+                    var id = horario[i].getElementsByTagName('id')[0].firstChild.nodeValue;
+                    var hora = horario[i].getElementsByTagName('hora')[0].firstChild.nodeValue;
+                    contenido += "<option value='" + id + "'>" + hora + "</option>";
+                }
+            }else{
+                contenido = "<option value='0'>--Ninguna hora disponible--</option>";
+                html_hora.setAttribute("readonly", "");
             }
 
-            document.getElementById("hora_reserva").innerHTML = contenido;
+            html_hora.innerHTML = contenido;
         }
 
     }
@@ -156,7 +165,7 @@ function crea_query_string(accion) {
 function confirmarReserva() {
 
     peticion_http = new XMLHttpRequest();
-    if (peticion_http) {
+    if (peticion_http && document.getElementById("hora_reserva").value !=0) {
 
         peticion_http.onload = respuestaConfirmarReserva;
         peticion_http.open("POST", "../controlador/controlador.php", true);
@@ -177,9 +186,17 @@ function respuestaConfirmarReserva() {
     if (peticion_http.readyState == READY_STATE_COMPLETE && peticion_http.status == STATUS_RIGHT) {
 
         var doc_xml = peticion_http.responseXML;
-        var respuesta = doc_xml.getElementsByTagName("respuesta")[0];
+        var reservas = doc_xml.getElementsByTagName("reservas")[0];
 
-        document.getElementById("resultado").innerHTML = respuesta.firstChild.nodeValue;
+        if (reservas.firstChild.nodeName == "respuesta") {
+
+            document.getElementById("resultado").innerHTML = reservas.firstChild.firstChild.nodeValue;
+
+        } else {
+
+            window.location.href = "mensaje_reservar.php";
+
+        }
 
     }
 

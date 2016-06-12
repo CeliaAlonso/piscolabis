@@ -142,7 +142,7 @@ class Controlador {
             $reserva = new Reservas($nombre, $numero, $fecha, $usuario);
             $horario = new Horario($fecha, "", "");
             if ($reserva->guardarReserva($mensaje) && $horario->loadHorarioReservado($mensaje)) {
-                $reservas = "<reservas><respuesta>Se ha realizado su reserva correctamente.</respuesta></reservas>";
+                $reservas = "<reservas>Se ha realizado su reserva correctamente.</reservas>";
                 return $reservas;
             }
         } else {
@@ -176,7 +176,7 @@ class Controlador {
             $cuenta = new Cuenta($nombre, $apellido1, $apellido2, $nacimiento, $email, $telefono, $usuario, $contrasenia);
 
             if ($datos = $cuenta->guardarUsuario($mensaje)) {
-                return "<cuenta><respuesta>Su cuenta de usuario ha sido creada correctamente.</respuesta></cuenta>";
+                return "<cuenta>Su cuenta de usuario ha sido creada correctamente.</cuenta>";
             } else {
                 if ($mensaje) {
                     if (strpos($mensaje, 'UQ_USUARIOS_email') !== False) {

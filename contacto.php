@@ -136,10 +136,10 @@ if (!isset($_SESSION["usuario"])) {
                                     </div>
                                     <div class="row form-group">
                                         <div class="col-lg-12">
-                                            <label for="mensaje" class="control-label">Email de contacto</label>
+                                            <label for="mensaje" class="control-label">Mensaje</label>
                                         </div>
                                         <div class="col-lg-12">
-                                            <textarea name="mensaje" id="mensaje" class="form-control" oninput="habilitarEnviar()" placeholder="Introduce el mensaje que nos quieres hacer llegar" required=""></textarea>
+                                            <textarea name="mensaje" id="mensaje" class="form-control" oninput="habilitarEnviar()" placeholder="Introduce el mensaje que nos quieres hacer llegar" required="" rows="5"></textarea>
                                             <span id="mensaje0" class="form-control-feedback"></span>
                                         </div>
                                     </div>

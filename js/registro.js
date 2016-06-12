@@ -165,9 +165,18 @@ function respuestaRegistro() {
     if (peticion_http.readyState == READY_STATE_COMPLETE && peticion_http.status == STATUS_RIGHT) {
 
         var doc_xml = peticion_http.responseXML;
-        var respuesta = doc_xml.getElementsByTagName("respuesta")[0];
-        
-        document.getElementById("resultado").innerHTML = respuesta.firstChild.nodeValue;
+        var cuenta = doc_xml.getElementsByTagName("cuenta")[0];
+
+        if (cuenta.firstChild.nodeName == "respuesta") {
+
+            document.getElementById("resultado").innerHTML = cuenta.firstChild.firstChild.nodeValue;
+
+        } else {
+
+            window.location.href = "mensaje_registro.php";
+
+        }
+
     }
 
 }

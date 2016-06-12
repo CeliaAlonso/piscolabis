@@ -87,13 +87,10 @@ if (!isset($_SESSION["usuario"])) {
                 <div class="container formulario">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1>Recuerda...</h1>
+                            <h1>¡Su reserva se ha realizado con éxito!</h1>
                         </div>
                         <div class="col-lg-12">
-                            <p id="errores" class="error centrar">Tienes que iniciar sesión con tu cuenta de usuario antes de poder reservar.</p>
-                        </div>
-                        <div class="col-lg-12">
-                            <p class="centrar"><a href="index.php">Volver a la página de Inicio</a></p>
+                            <p id="errores" class="error centrar">Si quiere ver la información que ha realizado acceda a 'Mis reservas', <a href="mis_reservas.php">pulsando aquí.</a></p>
                         </div>
                     </div>
                 </div>
